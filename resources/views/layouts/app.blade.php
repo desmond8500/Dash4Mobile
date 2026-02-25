@@ -19,13 +19,13 @@
 
         @livewireStyles
     </head>
-    <body class="container-xl">
+    <body class="container-xl bg-secondary">
         @livewire('_main.navbar')
 
         {{ $slot }}
 
         @livewireScripts
-        <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/js/tabler.min.js">
-        </script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/js/tabler.min.js"> </script>
     </body>
 </html>

@@ -9,6 +9,5 @@ new class extends Component
 ?>
 
 <div>
-    @livewire('_main.menu')
-
+    {{-- An unexamined life is not worth living. - Socrates --}}
 </div>

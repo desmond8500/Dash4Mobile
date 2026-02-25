@@ -4,77 +4,18 @@ use Livewire\Component;
 
 new class extends Component
 {
-    //
+
 };
 ?>
 
-<div>
-    <header class="navbar navbar-expand-md d-print-none">
-        <div class="container-xl">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
-                aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- BEGIN NAVBAR LOGO --><a href="../../.." aria-label="Tabler"
-                class="navbar-brand navbar-brand-autodark me-3">
-                {{ env('APP_NAME') }}
-            </a><!-- END NAVBAR LOGO -->
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">
-                        <i class="ti ti-home me-1 "></i>
-                        <span class="nav-link-title"> Home </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <span class="nav-link-icon">
-                            <!-- Download SVG icon from http://tabler.io/icons/icon/checkbox -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-1">
-                                <path d="M9 11l3 3l8 -8" />
-                                <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
-                            </svg>
-                        </span>
-                        <span class="nav-link-title"> Profile </span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <span class="nav-link-icon">
-                            <!-- Download SVG icon from http://tabler.io/icons/icon/checkbox -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-1">
-                                <path d="M9 11l3 3l8 -8" />
-                                <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
-                            </svg>
-                        </span>
-                        <span class="nav-link-title"> Settings </span>
-                    </a>
-                </li>
-            </ul>
-            <div class="navbar-nav flex-row order-md-last ms-auto">
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link d-flex lh-1 text-reset" data-bs-toggle="dropdown"
-                        aria-label="Open user menu">
-                        <span class="avatar avatar-sm" style="background-image: url(/static/avatars/044m.jpg)"></span>
-                        <div class="d-none d-xl-block ps-2">
-                            <div>Paweł Kuna</div>
-                            <div class="mt-1 small text-secondary">UI Designer</div>
-                        </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                        <a href="#" class="dropdown-item">Status</a>
-                        <a href="./profile.html" class="dropdown-item">Profile</a>
-                        <a href="#" class="dropdown-item">Feedback</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="./settings.html" class="dropdown-item">Settings</a>
-                        <a href="./sign-in.html" class="dropdown-item">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+<div class="bg-white rounded">
+    <div class="d-flex justify-content-between align-items-center py-2 border p-2 mt-1 rounded">
+        <button class="btn btn-primary btn-icon" >
+            <i class="ti ti-menu-2"></i>
+        </button>
+        <div>Dash Mobile</div>
+        <button class="btn btn-primary btn-icon" >
+            <i class="ti ti-user"></i>
+        </button>
+    </div>
 </div>
