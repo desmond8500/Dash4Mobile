@@ -11,7 +11,7 @@ new class extends Component
                     ['icon' => 'box', 'label' => 'Articles', 'route' => 'articles-page'],
                     ['icon' => 'list', 'label' => 'Taches', 'route' => 'taches-page'],
                     ['icon' => 'file', 'label' => 'Devis', 'route' => 'devis-page'],
-                    ['icon' => 'file', 'label' => 'Trouver', 'route' => 'search-page'],
+                    ['icon' => 'search', 'label' => 'Trouver', 'route' => 'search-page'],
                 ]
             ];
     }

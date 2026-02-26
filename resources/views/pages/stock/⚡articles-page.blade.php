@@ -9,5 +9,6 @@ new class extends Component
 ?>
 
 <div>
-    {{-- No surplus words or unnecessary actions. - Marcus Aurelius --}}
+    @livewire('_main.page-header')
+    @livewire('stock.articles.⚡articles-list')
 </div>
