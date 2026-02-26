@@ -11,16 +11,15 @@ new class extends Component
             'articles' => Http::get('https://dash3.yonkou.info/api/v1/items')->object() ?? [],
         ];
     }
-
 };
 ?>
 
 <div class="bg-white rounded p-2">
     <div class="row g-2">
         @foreach ($articles->data as $article)
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <a class="col-sm-6 col-md-4 col-lg-3" href="{{ route('article-page', ['article_id' => $article->id]) }}">
                 @livewire('stock.articles.article-card', ['article' => $article], key($article->id))
-            </div>
+            </a>
         @endforeach
     </div>
 </div>
