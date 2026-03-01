@@ -25,8 +25,12 @@ new class extends Component
                             <a href="/">Accueil</a>
                         </li>
                         @foreach ($breadcrumbs as $breadcrumb)
-                            <li class="breadcrumb-item">
-                                <a href="{{ $breadcrumb['route'] }}">{{ $breadcrumb['label'] }}</a>
+                        <li class="breadcrumb-item">
+                                @if ($breadcrumb->route)
+                                    <a href="{{ route($breadcrumb->route) }}">{{ $breadcrumb->label }}</a>
+                                @else
+                                    <span>{{ $breadcrumb->label }}</span>
+                                @endif
                             </li>
                         @endforeach
                     </ol>

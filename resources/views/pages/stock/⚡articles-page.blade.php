@@ -4,9 +4,16 @@ use Livewire\Component;
 new class extends Component
 {
     public $title = 'Articles en stock';
-    public $breadcrumbs = [
-        ['label' => 'Articles', 'route' => '#'],
-    ];
+    public $breadcrumbs;
+
+    public function with(): array
+    {
+        return [
+            'breadcrumbs' => (object) array(
+                (object) array('label' => 'Articles', 'route' => ''),
+            ),
+        ];
+    }
 };
 ?>
 

@@ -17,8 +17,8 @@ Route::livewire('/erp/devis-page', 'pages::erp.⚡devis-page')->name('devis-page
 // Stock
 Route::livewire('/stock/achat-page/{achat_id}', 'pages::stock.⚡achat-page')->name('achat-page');
 Route::livewire('/stock/achats-page', 'pages::stock.⚡achats-page')->name('achats-page');
-Route::livewire('/stock/article-page/{article_id}', 'pages::stock.⚡article-page')->name('article-page');
 Route::livewire('/stock/articles-page', 'pages::stock.⚡articles-page')->name('articles-page');
+Route::livewire('/stock/article-page/{article_id}', 'pages::stock.⚡article-page')->name('article-page');
 Route::livewire('/stock/marque-page/{marque_id}', 'pages::stock.⚡marque-page')->name('marque-page');
 Route::livewire('/stock/marques-page', 'pages::stock.⚡marques-page')->name('marques-page');
 Route::livewire('/stock/fournisseur-page/{fournisseur_id}', 'pages::stock.⚡fournisseur-page')->name('fournisseur-page');
