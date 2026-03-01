@@ -60,7 +60,7 @@ new class extends Component
             </div>
         </div>
         @foreach ($articles->data as $article)
-            <a class="col-sm-6 col-md-4 col-lg-3" style="text-decoration: none" href="{{ route('article-page', ['article_id' => $article->id]) }}">
+            <a class="col-sm-6 col-md-4 col-lg-3" style="text-decoration: none" wire:navigate href="{{ route('article-page', ['article_id' => $article->id]) }}">
                 @livewire('stock.articles.article-card', ['article' => $article], key($article->id))
             </a>
         @endforeach

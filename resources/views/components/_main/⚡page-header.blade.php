@@ -22,7 +22,7 @@ new class extends Component
                 <div class="mb-1">
                     <ol class="breadcrumb" aria-label="breadcrumbs">
                         <li class="breadcrumb-item">
-                            <a href="/">Accueil</a>
+                            <a href="/" wire:navigate>Accueil</a>
                         </li>
                         @foreach ($breadcrumbs as $breadcrumb)
                         <li class="breadcrumb-item">

@@ -21,7 +21,7 @@ new class extends Component
 <div>
     <div class="d-flex justify-content-around align-items-center py-2 border p-2 mt-1 rounded bg-light">
         @foreach ($menus as $menu)
-            <a href="{{ route($menu['route']) }}" class=" flex-3 btn  w-100 m-1 btn-icon d-flex flex-column align-items-center">
+            <a wire:navigate href="{{ route($menu['route']) }}" class=" flex-3 btn  w-100 m-1 btn-icon d-flex flex-column align-items-center">
                 <i class="ti ti-{{ $menu['icon'] }}"></i>
                 <span style="font-size: 0.75rem;">{{ $menu['label'] }}</span>
             </a>

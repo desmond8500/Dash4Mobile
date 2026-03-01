@@ -15,7 +15,11 @@
 ## Lanceent avec Jump
 
 ```console
-php artisan native:jump
+php artisan native:jump 
+```
+
+```console
+php artisan native:jump --android
 ```
 
 ### Déploiement
