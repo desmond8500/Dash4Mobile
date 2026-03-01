@@ -28,13 +28,11 @@ new class extends Component
                             <li class="breadcrumb-item">
                                 <a href="{{ $breadcrumb['route'] }}">{{ $breadcrumb['label'] }}</a>
                             </li>
-
                         @endforeach
                     </ol>
                 </div>
                 <h2 class="page-title">
-                    <span class="text-truncate">
-                        {{ $title}}</span>
+                    <span class="text-truncate"> {{ $title}}</span>
                 </h2>
             </div>
             <div class="col-auto">

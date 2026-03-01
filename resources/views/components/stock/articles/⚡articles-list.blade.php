@@ -8,25 +8,40 @@ new class extends Component
     public $page=1;
     public $articles = [];
 
-
-
     function mount($search = '', $page = 1)
     {
-        $this->search = $search;
         $this->page = $page;
         $this->articles = Http::get(env('APP_SERVER_URL').'/api/v1/items?page='.$this->page.'&search='.$this->search)->object() ?? [];
     }
 
     function with(): array
     {
-        if ($this->search) {
-            $articles = Http::get(env('APP_SERVER_URL').'/api/v1/items?page='.$this->page.'&search='.$this->search)->object() ?? [];
-        } else {
-            $articles = Http::get(env('APP_SERVER_URL').'/api/v1/items?page='.$this->page)->object() ?? [];
-        }
+        // if ($this->search) {
+        //     $articles = Http::get(env('APP_SERVER_URL').'/api/v1/items?page='.$this->page.'&search='.$this->search)->object() ?? [];
+        // } else {
+        //     $articles = Http::get(env('APP_SERVER_URL').'/api/v1/items?page='.$this->page)->object() ?? [];
+        // }
         return [
-            'articles' => $articles,
+            'articles' => Http::get(env('APP_SERVER_URL').'/api/v1/items?page='.$this->page.'&search='.$this->search)->object() ?? [],
+            'page' => $this->page,
+            // 'articles' => $this->articles,
+            // 'articles' => $this->getArticles(),
         ];
+    }
+
+    function getArticles()
+    {
+        // if ($this->search) {
+        //     return Http::get(env('APP_SERVER_URL').'/api/v1/items?page='.$this->page.'&search='.$this->search)->object() ?? [];
+        // } else {
+            // return Http::get(env('APP_SERVER_URL').'/api/v1/items?page='.$this->page)->object() ?? [];
+        // }
+        $this->article = Http::get(env('APP_SERVER_URL').'/api/v1/items?page='.$this->page)->object() ?? [];
+    }
+    function searchArticles()
+    {
+        $this->page = 1;
+        $this->articles = Http::get(env('APP_SERVER_URL').'/api/v1/items?page='.$this->page.'&search='.$this->search)->object();
     }
 
     function nextPage()
@@ -47,13 +62,30 @@ new class extends Component
 
 <div class="bg-white rounded p-2">
     <div class="row g-2">
+        <div class="col-12">
+            <div class="d-flex gap-2 justify-content-end">
+                <div class="input-icon">
+                    <input type="text" class="form-control form-control-rounded" wire:model="search" placeholder="Chercher">
+                    <span class="input-icon-addon">
+                        <i class="ti ti-search"></i>
+                    </span>
+                </div>
+                <button class="btn btn-primary" wire:click="searchArticles()" wire:keydown.enter="searchArticles()">Rechercher</button>
+            </div>
+        </div>
         @foreach ($articles->data as $article)
             <a class="col-sm-6 col-md-4 col-lg-3" href="{{ route('article-page', ['article_id' => $article->id]) }}">
                 @livewire('stock.articles.article-card', ['article' => $article], key($article->id))
             </a>
         @endforeach
         <div class="col-md-12">
-            @livewire('_main.pagination', ['pagination' => $articles->meta])
+            <div class="d-flex justify-content-between">
+                <div>
+                    <div class="text-muted">{{ $articles->meta->total }} Articles</div>
+                    <div>Page {{ $articles->meta->current_page }} / {{ $articles->meta->last_page }}</div>
+                </div>
+                @livewire('_main.pagination', ['pagination' => $articles->meta, 'page' => $this->page])
+            </div>
         </div>
     </div>
 </div>
