@@ -14,8 +14,14 @@ new class extends Component
             <i class="ti ti-menu-2"></i>
         </a>
         <div>Dash Mobile</div>
-        <button class="btn btn-primary btn-icon" >
-            <i class="ti ti-user"></i>
-        </button>
+
+        <div class="dropdown open">
+            <button class="btn btn-icon btn-primary" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="ti ti-user"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="triggerId">
+                <a class="dropdown-item" href="{{ route('profile-page') }}"> <i class="ti ti-user-edit"></i> Profile</a>
+            </div>
+        </div>
     </div>
 </div>
