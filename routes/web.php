@@ -11,7 +11,8 @@ Route::livewire('/index-page', 'pages::⚡index-page')->name('index-page');
 Route::livewire('search-page', 'pages::search-page')->name('search-page');
 // ERP
 Route::livewire('/erp/clients-page', 'pages::erp.⚡clients-page')->name('clients-page');
-Route::livewire('/erp/projets-page', 'pages::erp.⚡projets-page')->name('projets-page');
+Route::livewire('/erp/projets-page/{client_id}', 'pages::erp.⚡projets-page')->name('projets-page');
+Route::livewire('/erp/projet-page/{projet_id}', 'pages::erp.⚡projet-page')->name('projet-page');
 Route::livewire('/erp/taches-page', 'pages::erp.⚡taches-page')->name('taches-page');
 Route::livewire('/erp/devis-page', 'pages::erp.⚡devis-page')->name('devis-page');
 // Stock

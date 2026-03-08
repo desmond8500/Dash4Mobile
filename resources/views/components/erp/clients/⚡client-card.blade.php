@@ -12,7 +12,7 @@ new class extends Component
     <div class="border p-2 rounded">
         <div class="row ">
             <div class="col-auto">
-                <img src="{{ asset($client->avatar) }}" alt="A" class="avatar avatar-md">
+                <img src="{{ asset(env('APP_SERVER_URL').'/'.$client->avatar) }}" alt="A" class="avatar avatar-md">
             </div>
             <div class="col">
                 <div class="fw-bold">{{ $client->name }}</div>

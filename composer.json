@@ -12,11 +12,13 @@
         "php": "^8.2",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
+        "livewire/blaze": "^1.0",
         "livewire/livewire": "^4.1.4",
         "nativephp/mobile": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+        "fruitcake/laravel-debugbar": "^4.0",
         "laravel/boost": "2.0",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.24",

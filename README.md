@@ -5,6 +5,7 @@
 * Laravel 12
 * Livewire 4
 * NativePHP 3
+* Tabler template
 
 ## Fonctionalités
 
