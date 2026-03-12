@@ -5,27 +5,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>{{ $title ?? config('app.name') }}</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/css/tabler.min.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
         <style>
-            i {
-                font-size: 1.25rem;
-
-            }
+            i { font-size: 1.25rem; }
         </style>
-
-
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-
         @livewireStyles
     </head>
     <body class="container-xl bg-secondary">
-        @livewire('_main.navbar')
-
+        <div class="sticky-top">
+            @livewire('_main.navbar')
+        </div>
         {{ $slot }}
-
         @livewireScripts
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/js/tabler.min.js"> </script>
     </body>
+    <div class="footer rounded mt-2 ">
+        <div class="text-center text-muted py-1">
+            &copy; {{ date('Y') }} {{ config('app.name') }}. Tous droits réservés.
+        </div>
+    </div>
 </html>

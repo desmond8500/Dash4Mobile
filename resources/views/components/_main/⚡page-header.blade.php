@@ -15,7 +15,7 @@ new class extends Component
 };
 ?>
 
-<div class="bg-white border rounded p-2 mb-2">
+<div class="bg-white border rounded p-2 mb-2 sticky-top">
     <div class="page-header">
         <div class="row align-items-center mw-100">
             <div class="col">
