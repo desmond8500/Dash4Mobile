@@ -1,0 +1,32 @@
+<div>
+  <!-- <div class="menu-grid">
+    <div class="menu-item" *ngFor="let item of menus" [routerLink]="item.url">
+      <ion-icon [name]="item.icon"></ion-icon>
+      <span>{{ item.title }}</span>
+    </div>
+  </div> -->
+
+  <div class="menu-grid">
+
+    <div class="menu-item" routerLink="/camera">
+      <ion-icon name="videocam"></ion-icon>
+      <span>Caméras</span>
+    </div>
+
+    <div class="menu-item" routerLink="/alarm">
+      <ion-icon name="alert"></ion-icon>
+      <span>Alarme</span>
+    </div>
+
+    <div class="menu-item" routerLink="/access">
+      <ion-icon name="key"></ion-icon>
+      <span>Accès</span>
+    </div>
+
+    <div class="menu-item" routerLink="/settings">
+      <ion-icon name="settings"></ion-icon>
+      <span>Paramètres</span>
+    </div>
+
+  </div>
+</div>

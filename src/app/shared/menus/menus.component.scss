@@ -1,0 +1,41 @@
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.menu-item {
+  width: 48%;
+  /* 2 colonnes */
+  height: 120px;
+  background: #1e1e2f;
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 10px;
+  color: white;
+  font-size: 14px;
+
+  transition: 0.2s;
+}
+
+.menu-item ion-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.menu-item:hover {
+  transform: scale(1.05);
+  background: #2a2a40;
+}
+
+@media (min-width: 768px) {
+  .menu-item {
+    width: 30%;
+  }
+}

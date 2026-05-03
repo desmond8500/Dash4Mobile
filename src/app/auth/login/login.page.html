@@ -1,0 +1,33 @@
+<app-header title="Connexion"></app-header>
+
+
+<ion-content class="ion-padding">
+  <div style="text-align: center; margin-top: 30px; ">
+    <ion-icon name="person-outline" style="font-size: 32px; color: #0163aa;"></ion-icon>
+  </div>
+
+  <div [formGroup]="form">
+    <ion-item>
+      <ion-input label="Email" labelPlacement="floating" type="email" formControlName="email" [clearInput]="true" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Password" labelPlacement="floating" type="password" formControlName="password" [clearInput]="true" >
+      </ion-input>
+    </ion-item>
+
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+      <ion-button (click)="login()">Connexion</ion-button>
+    </div>
+
+    <div class="text-end" style="margin-top: 30px;">
+      <div style="margin-top: 10px; text-align: right;">
+        <a routerLink="/reset_password">Mot de passe oublié</a>
+      </div>
+      <div style="margin-top: 10px; text-align: right;">
+        <a routerLink="/register">Pas encore de compte ?</a>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>

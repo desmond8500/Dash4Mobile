@@ -1,0 +1,39 @@
+<app-header title="Inscription"></app-header>
+
+<ion-content class="ion-padding">
+  <div style="text-align: center; margin-top: 30px; ">
+    <ion-icon name="person-outline" style="font-size: 32px; color: #0163aa;"></ion-icon>
+  </div>
+
+  <div [formGroup]="form">
+    <ion-item>
+      <ion-input label="Prénom" labelPlacement="floating" type="text" formControlName="firstname" [clearInput]="true" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Nom de famille" labelPlacement="floating" type="text" formControlName="lastname" [clearInput]="true" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Email" labelPlacement="floating" type="email" formControlName="email" [clearInput]="true" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Mot de passe" labelPlacement="floating" type="password" formControlName="password" [clearInput]="true" >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Confirmer le mot de passe" labelPlacement="floating" type="password" formControlName="confirm" [clearInput]="true" >
+      </ion-input>
+    </ion-item>
+
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+      <ion-button (click)="register()">Inscription</ion-button>
+    </div>
+
+    <div class="text-end" style="margin-top: 30px;">
+      <div style="margin-top: 10px; text-align: right;">
+        <a routerLink="/login">Avez vous déja un compte ?</a>
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>

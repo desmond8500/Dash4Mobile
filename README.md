@@ -1,30 +1,14 @@
-# Dash Mobile 4
+# Dash Mobile
 
-## Technologies
+## Description
 
-* Laravel 12
-* Livewire 4
-* NativePHP 3
-* Tabler template
+Application mobile Dash
 
-## Fonctionalités
-
-* Récupération d'articles
- 
-## Native PHP
-
-## Lanceent avec Jump
+## Générer l'APK
 
 ```console
-php artisan native:jump 
-```
-
-```console
-php artisan native:jump --android
-```
-
-### Déploiement
-
-```console
-php artisan native:run --build=release
+ionic build --prod
+mv www/browser/* www/
+npx cap sync
+./gradlew assembleDebug
 ```

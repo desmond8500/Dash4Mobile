@@ -1,0 +1,31 @@
+<app-header title="Réglages"></app-header>
+
+<ion-content class="ion-padding">
+
+  <div>
+    <h2>Paramètres de l'application</h2>
+    <p>Gérez vos préférences et paramètres ici.</p>
+
+    <ion-item >
+      <ion-label>
+        <h3>Server</h3>
+        <p>{{ form.value.server ?? 'Pas de serveur' }}</p>
+      </ion-label>
+
+      @if(server_form){
+        <div [formGroup]="form">
+          <input type="text" formControlName="server" placeholder="Enter a value">
+        </div>
+        <ion-button size="small" (click)="setServer()">Save</ion-button>
+      }@else {
+        <ion-button size="small" (click)="toggle_server_form()">Edit</ion-button>
+      }
+
+    </ion-item>
+
+
+  </div>
+
+
+
+</ion-content>

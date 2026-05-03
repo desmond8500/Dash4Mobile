@@ -1,0 +1,12 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+
+    @for(tab of tabs; track tab.route){
+      <ion-tab-button [tab]="tab.route">
+        <ion-icon [name]="tab.icon"></ion-icon>
+        {{ tab.name }}
+      </ion-tab-button>
+    }
+
+  </ion-tab-bar>
+</ion-tabs>
