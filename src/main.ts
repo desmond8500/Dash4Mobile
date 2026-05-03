@@ -5,6 +5,7 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
+import { provideHttpClient } from '@angular/common/http';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -13,7 +14,7 @@ bootstrapApplication(AppComponent, {
       mode: 'ios',
     }),
     provideRouter(routes, withPreloading(PreloadAllModules)),
-
+    provideHttpClient(),
   ],
 });
 

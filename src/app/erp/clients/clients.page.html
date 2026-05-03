@@ -2,8 +2,28 @@
 
 <ion-content class="ion-padding">
 
-  <app-client-card>
+  <ion-list>
+    @for(client of clients.data; track client.id) {
+      <app-client-card [client]="client"></app-client-card>
+    }
+  </ion-list>
 
-  </app-client-card>
+  <div class="pagination">
+    <ion-button
+      (click)="changePage(page - 1)"
+      [disabled]="page === 1">
+      Précédent
+    </ion-button>
+
+    <ion-button color="medium"> {{ page }} </ion-button>
+
+    <ion-button
+      (click)="changePage(page + 1)"
+      [disabled]="page === lastPage">
+      Suivant
+    </ion-button>
+
+  </div>
+
 
 </ion-content>

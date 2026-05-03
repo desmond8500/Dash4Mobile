@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IonThumbnail, IonItem, IonLabel } from '@ionic/angular/standalone';
 
 @Component({
@@ -12,7 +12,7 @@ import { IonThumbnail, IonItem, IonLabel } from '@ionic/angular/standalone';
   ],
 })
 export class ClientCardComponent  implements OnInit {
-
+  @Input() client: any;
   constructor() { }
 
   ngOnInit() {}
