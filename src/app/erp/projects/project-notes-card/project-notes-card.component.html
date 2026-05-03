@@ -1,0 +1,10 @@
+<ion-accordion-group>
+  @for(note of notes?.data; track note.id) {
+    <ion-accordion >
+      <ion-item slot="header" color="light">
+        <ion-label>{{ note.titre }}</ion-label>
+      </ion-item>
+      <div class="ion-padding text" slot="content">{{ note.description }}</div>
+    </ion-accordion>
+  }
+</ion-accordion-group>

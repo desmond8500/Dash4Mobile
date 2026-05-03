@@ -1,0 +1,10 @@
+<app-header title="Projets" back="/clients"></app-header>
+
+<ion-content class="ion-padding">
+
+  <ion-list>
+    @for(projet of projets?.data; track projet.id) {
+      <app-project-card [projet]="projet"></app-project-card>
+    }
+  </ion-list>
+</ion-content>

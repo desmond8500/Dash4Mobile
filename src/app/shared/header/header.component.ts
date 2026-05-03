@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { IonIcon } from '@ionic/angular/standalone';
+import { IonBackButton } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
-import { settingsOutline } from 'ionicons/icons';
+import { arrowBack } from 'ionicons/icons';
 
 import {
   IonHeader,
@@ -12,7 +12,7 @@ import {
   IonButton,
   IonButtons,
   IonMenuButton,
-
+  IonIcon,
 
  } from '@ionic/angular/standalone';
 @Component({
@@ -32,9 +32,10 @@ import {
 })
 export class HeaderComponent implements OnInit {
   @Input() title: string = '';
+  @Input() back: string = '/';
 
   constructor() {
-    addIcons({ settingsOutline });
+    addIcons({ arrowBack });
   }
 
   ngOnInit() {}

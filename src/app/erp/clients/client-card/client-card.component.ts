@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { IonThumbnail, IonItem, IonLabel } from '@ionic/angular/standalone';
 
 @Component({
@@ -8,7 +9,8 @@ import { IonThumbnail, IonItem, IonLabel } from '@ionic/angular/standalone';
   imports: [
     IonItem,
     IonThumbnail,
-    IonLabel
+    IonLabel,
+    RouterLink,
   ],
 })
 export class ClientCardComponent  implements OnInit {

@@ -33,9 +33,18 @@ export const routes: Routes = [
   {
     path: 'reset_password',
     loadComponent: () => import('./auth/reset-password/reset-password.page').then( m => m.ResetPasswordPage)
-  },  {
+  },
+  {
     path: 'clients',
     loadComponent: () => import('./erp/clients/clients.page').then( m => m.ClientsPage)
+  },
+  {
+    path: 'projects/:clientId',
+    loadComponent: () => import('./erp/projects/projects.page').then( m => m.ProjectsPage)
+  },
+  {
+    path: 'project/:projectId',
+    loadComponent: () => import('./erp/project/project.page').then( m => m.ProjectPage)
   },
 
 

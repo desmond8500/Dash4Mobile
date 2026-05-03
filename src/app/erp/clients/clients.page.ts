@@ -37,7 +37,6 @@ export class ClientsPage implements OnInit {
       next: (data: any) => {
         this.clients = data.data;
         this.lastPage = data.data.last_page;
-        console.log(data.data.data);
       },
       error: (err) => {
         console.error(err);
