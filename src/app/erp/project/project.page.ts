@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonButton } from '@ionic/angular/standalone';
+import { IonContent } from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectCardComponent } from '../projects/project-card/project-card.component';
@@ -13,7 +13,7 @@ import { ProjectNotesCardComponent } from '../projects/project-notes-card/projec
   templateUrl: './project.page.html',
   styleUrls: ['./project.page.scss'],
   standalone: true,
-  imports: [IonButton, IonContent, ProjectNotesCardComponent ,CommonModule, FormsModule, HeaderComponent, ProjectCardComponent]
+  imports: [ IonContent, ProjectNotesCardComponent ,CommonModule, FormsModule, HeaderComponent, ProjectCardComponent]
 })
 export class ProjectPage implements OnInit {
   aroute = inject(ActivatedRoute);
