@@ -1,4 +1,4 @@
-package com.yonkou.ionic8;
+package com.yonkou.dashmobile;
 
 import com.getcapacitor.BridgeActivity;
 
