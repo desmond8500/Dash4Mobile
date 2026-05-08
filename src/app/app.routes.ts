@@ -45,7 +45,23 @@ export const routes: Routes = [
   {
     path: 'project/:projectId',
     loadComponent: () => import('./erp/project/project.page').then( m => m.ProjectPage)
+  },  {
+    path: 'tasks',
+    loadComponent: () => import('./erp/tasks/tasks.page').then( m => m.TasksPage)
   },
+  {
+    path: 'task',
+    loadComponent: () => import('./erp/task/task.page').then( m => m.TaskPage)
+  },
+  {
+    path: 'galaxy',
+    loadComponent: () => import('./security/tools/galaxy/galaxy.page').then( m => m.GalaxyPage)
+  },
+  {
+    path: 'contacts',
+    loadComponent: () => import('./erp/contacts/contacts.page').then( m => m.ContactsPage)
+  },
+
 
 
 ];

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   IonButton,
   IonContent,
@@ -26,6 +27,7 @@ import {
     IonToolbar,
     IonFooter,
     IonIcon,
+    RouterLink,
   ],
 })
 export class SidebarComponent implements OnInit {
