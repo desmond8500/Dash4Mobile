@@ -43,6 +43,8 @@ export class ProjectsPage implements OnInit {
     this._projet.getProjects(this.client_id).subscribe({
       next: (data: any) => {
         this.projets = data;
+        console.log(data);
+
       },
       error: (err) => {
         console.error('Error fetching projects:', err);

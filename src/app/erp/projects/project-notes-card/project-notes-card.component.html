@@ -4,7 +4,11 @@
       <ion-item slot="header" color="light">
         <ion-label>{{ note.titre }}</ion-label>
       </ion-item>
-      <div class="ion-padding text" slot="content">{{ note.description }}</div>
+
+      <div  slot="content" class="content">
+        <markdown [data]="note.description">
+        </markdown>
+      </div>
     </ion-accordion>
   }
 </ion-accordion-group>

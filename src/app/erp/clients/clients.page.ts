@@ -35,8 +35,8 @@ export class ClientsPage implements OnInit {
   getClients() {
     this._client.getClients(this.page).subscribe({
       next: (data: any) => {
-        this.clients = data.data;
-        this.lastPage = data.data.last_page;
+        this.clients = data;
+        this.lastPage = data.meta.last_page;
       },
       error: (err) => {
         console.error(err);

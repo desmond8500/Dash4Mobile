@@ -6,13 +6,14 @@ import {
   IonItem,
   IonLabel,
 } from '@ionic/angular/standalone';
+import { MarkdownComponent } from 'ngx-markdown';
 
 @Component({
   selector: 'app-project-notes-card',
   templateUrl: './project-notes-card.component.html',
   styleUrls: ['./project-notes-card.component.scss'],
   standalone: true,
-  imports: [IonAccordion, IonAccordionGroup, IonItem, IonLabel]
+  imports: [MarkdownComponent ,IonAccordion, IonAccordionGroup, IonItem, IonLabel]
 })
 export class ProjectNotesCardComponent implements OnInit {
   @Input() projet_id: any;
