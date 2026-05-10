@@ -1,5 +1,13 @@
 <app-header title="Notes" [back]="back"></app-header>
 
 <ion-content class="ion-padding">
-dfds
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>Notes</h2>
+    <div>
+      <ion-button size="small">+ Note</ion-button>
+    </div>
+  </div>
+
+  <app-project-notes-card [projet_id]="projet_id"></app-project-notes-card>
+
 </ion-content>

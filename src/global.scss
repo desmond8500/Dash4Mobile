@@ -36,4 +36,20 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
 
+.d-flex{
+  display: flex;
+}
+
+.d-grid{
+  display: grid;
+}
+
+.justify-content-between{
+  justify-content: space-between;
+}
+
+.align-items-center{
+  align-items: center;
+}
+
 
