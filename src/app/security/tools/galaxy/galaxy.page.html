@@ -2,5 +2,18 @@
 
 <ion-content class="ion-padding">
 
+  <div class="result">{{ result() }} </div>
+
+  <form  class="form" [formGroup]="form">
+    <ion-input [(ngModel)]="textInput"
+      mode="android"
+      label="Texte"
+      labelPlacement="floating"
+      [clearInput]="true"
+      placeholder="Texte à convertir"
+      fill="outline"
+      formControlName="search"
+      ></ion-input>
+  </form>
 
 </ion-content>
