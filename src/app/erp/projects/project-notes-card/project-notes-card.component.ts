@@ -18,7 +18,7 @@ import { MarkdownComponent } from 'ngx-markdown';
 export class ProjectNotesCardComponent implements OnInit {
   @Input() projet_id: any;
   _projet = inject(ProjetService);
-  notes: any;
+  notes: any = [];
 
   constructor() {  }
 

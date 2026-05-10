@@ -6,9 +6,9 @@ import { ActivatedRoute } from '@angular/router';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 
 @Component({
-  selector: 'app-contacts',
-  templateUrl: './contacts.page.html',
-  styleUrls: ['./contacts.page.scss'],
+  selector: 'app-journaux',
+  templateUrl: './journaux.page.html',
+  styleUrls: ['./journaux.page.scss'],
   standalone: true,
   imports: [
     IonContent,
@@ -17,7 +17,7 @@ import { HeaderComponent } from 'src/app/shared/header/header.component';
     HeaderComponent,
   ],
 })
-export class ContactsPage implements OnInit {
+export class JournauxPage implements OnInit {
   back: any;
   aroute = inject(ActivatedRoute);
   projet_id: any;

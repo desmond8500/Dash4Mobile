@@ -9,6 +9,10 @@ export class ProjetService {
   _main = inject(MainService);
   _http = inject(HttpClient);
 
+  getServer(){
+    return this._main.getServer()
+  }
+
   getProjects(client_id: number, page: number = 1) {
     return this._http.get(
       `${this._main.getServer()}/v1/clients/projets/${client_id}?page=${page}`,
@@ -21,7 +25,8 @@ export class ProjetService {
 
   getNotes(project_id: number, page: number = 1) {
     return this._http.get(
-      `${this._main.getServer()}/v1/get_projet_notes/${project_id}?page=${page}`,
+      `${this._main.getServer()}/v1/get_projet_notes/${project_id}`,
+      // `${this._main.getServer()}/v1/get_projet_notes/${project_id}?page=${page}`,
     );
   }
   getNote(note_id: number, page: number = 1) {

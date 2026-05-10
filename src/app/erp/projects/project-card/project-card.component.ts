@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, Input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IonItem, IonThumbnail, IonLabel} from '@ionic/angular/standalone';
 
@@ -6,13 +6,12 @@ import { IonItem, IonThumbnail, IonLabel} from '@ionic/angular/standalone';
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
   styleUrls: ['./project-card.component.scss'],
-  imports: [IonItem, IonThumbnail, IonLabel, RouterLink]
+  imports: [IonItem, IonThumbnail, IonLabel, RouterLink],
 })
-export class ProjectCardComponent  implements OnInit {
-  @Input() projet: any;
+export class ProjectCardComponent implements OnInit {
+  projet = input<any>();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
-
 }

@@ -1,0 +1,25 @@
+<app-header title="Projet" [back]="back"></app-header>
+
+<ion-content class="ion-padding">
+  <app-project-card [projet]="projet"  target="_blank"></app-project-card>
+    <!-- <a href="" [routerLink]="['https://dash3.yonkou.info/projet',projet.id]" target="_blank">
+      Dossier projet
+    </a> -->
+    <!-- <a href="https://dash3.yonkou.info/projet/{{ projet.id }}" target="_blank">
+      Dossier projet
+    </a> -->
+
+    <!-- <ion-button [routerLink]="['https://dash3.yonkou.info/projet',projet.id]">Page</ion-button> -->
+
+  <div class="menus">
+    @for(menu of menus; track menu.id){
+      <ion-button class="menu" [routerLink]="menu.route">
+        {{ menu.name }}
+      </ion-button>
+    }
+  </div>
+
+  <app-tasklist [projet_id]="projet_id"></app-tasklist>
+
+  <app-project-notes-card [projet_id]="projet_id"></app-project-notes-card>
+</ion-content>

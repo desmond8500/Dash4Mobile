@@ -1,21 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent } from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.page.html',
   styleUrls: ['./tasks.page.scss'],
   standalone: true,
-  imports: [HeaderComponent, IonContent, CommonModule, FormsModule, ]
+  imports: [HeaderComponent, IonContent, CommonModule, FormsModule],
 })
 export class TasksPage implements OnInit {
-
-  constructor() { }
+  back: any;
+  aroute = inject(ActivatedRoute);
+  projet_id: any;
+  constructor() {}
 
   ngOnInit() {
+    this.projet_id = this.aroute.snapshot.paramMap.get('projet_id');
+    this.back = '/project/' + this.projet_id;
   }
-
 }

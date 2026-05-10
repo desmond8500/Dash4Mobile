@@ -1,14 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { ActivatedRoute } from '@angular/router';
+import { IonContent } from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-contacts',
-  templateUrl: './contacts.page.html',
-  styleUrls: ['./contacts.page.scss'],
+  selector: 'app-buildings',
+  templateUrl: './buildings.page.html',
+  styleUrls: ['./buildings.page.scss'],
   standalone: true,
   imports: [
     IonContent,
@@ -17,9 +17,9 @@ import { HeaderComponent } from 'src/app/shared/header/header.component';
     HeaderComponent,
   ],
 })
-export class ContactsPage implements OnInit {
+export class BuildingsPage implements OnInit {
   back: any;
-  aroute = inject(ActivatedRoute);
+  aroute = inject(ActivatedRoute)
   projet_id: any;
   constructor() {}
 
