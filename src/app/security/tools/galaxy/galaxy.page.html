@@ -2,18 +2,31 @@
 
 <ion-content class="ion-padding">
 
-  <div class="result">{{ result() }} </div>
+  @if(result()){
+    <div class="result">{{ result() }} </div>
+
+  }
 
   <form  class="form" [formGroup]="form">
-    <ion-input [(ngModel)]="textInput"
-      mode="android"
-      label="Texte"
-      labelPlacement="floating"
-      [clearInput]="true"
-      placeholder="Texte à convertir"
-      fill="outline"
-      formControlName="search"
-      ></ion-input>
+    <ion-item>
+      <ion-input [(ngModel)]="textInput"
+        mode="android"
+        label="Texte"
+        labelPlacement="floating"
+        [clearInput]="true"
+        placeholder="Texte à convertir"
+        fill="outline"
+        formControlName="search"
+        >
+      </ion-input>
+
+    </ion-item>
   </form>
+
+  <div>
+    @for(item of list; track item){
+      <ion-button size="small" (click)="appendInput(item)">{{ item }}</ion-button>
+    }
+  </div>
 
 </ion-content>

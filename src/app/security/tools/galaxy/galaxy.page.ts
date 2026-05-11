@@ -1,9 +1,10 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonInput, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonItem, IonInput, IonButton } from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { Router } from '@angular/router';
+import {  } from '@ionic/angular';
 
 @Component({
   selector: 'app-galaxy',
@@ -11,13 +12,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./galaxy.page.scss'],
   standalone: true,
   imports: [
-    IonButton,
+    IonItem,
     IonInput,
     HeaderComponent,
     IonContent,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    IonButton
   ],
 })
 export class GalaxyPage implements OnInit {
@@ -30,6 +32,7 @@ export class GalaxyPage implements OnInit {
   textInput = signal('');
 
   letterMap: any;
+  list: any;
 
   constructor() {}
 
@@ -76,6 +79,12 @@ export class GalaxyPage implements OnInit {
       ['8', '08'],
       ['9', '09'],
     ]);
+
+    this.list = [
+      'CO', 'VOL', 'ENTREE', 'CLIENT', 'PERSONNEL', 'BP',
+      'LT', 'PEDALE', 'PERSO',
+      '1','2','3','4','5','6','7','8','9','0'
+    ]
   }
 
   result = computed(() => {
@@ -83,4 +92,15 @@ export class GalaxyPage implements OnInit {
       .map((letter) => this.letterMap.get(letter))
       .filter((v) => v !== undefined);
   });
+
+  setInput(text:string){
+    this.textInput.set(text)
+  }
+  appendInput(text:string){
+    if (this.textInput() == '') {
+      this.textInput.update((value) => value + text);
+    }else{
+      this.textInput.update((value) => value + ' ' + text);
+    }
+  }
 }
