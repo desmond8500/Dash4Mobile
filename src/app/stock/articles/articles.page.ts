@@ -6,6 +6,7 @@ import { ArticleService } from 'src/app/services/stock/article-service';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { addIcons } from 'ionicons';
 import { ArticleCardComponent } from '../article-card/article-card.component';
+import { PaginationComponent } from 'src/app/shared/pagination/pagination.component';
 
 @Component({
   selector: 'app-articles',
@@ -22,6 +23,7 @@ import { ArticleCardComponent } from '../article-card/article-card.component';
     IonRefresherContent,
     ArticleCardComponent,
     IonSearchbar,
+    PaginationComponent,
   ],
 })
 export class ArticlesPage implements OnInit {
@@ -46,7 +48,6 @@ export class ArticlesPage implements OnInit {
       next: (res: any) => {
         this.articles = res.data;
         this.lastPage = res.meta.last_page;
-        console.log(res);
       },
       error: (error: any) => console.log(error),
     });

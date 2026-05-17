@@ -11,25 +11,6 @@
     <app-article-card [article]="article"></app-article-card>
   }
 
-  <div class="pagination">
-    <ion-button
-      (click)="changePage(page - 1)"
-      [disabled]="page === 1">
-      Précédent
-    </ion-button>
-
-    @if(page > 1) {
-      <ion-button color="primary"> 1 </ion-button>
-    }
-    <ion-button color="medium"> {{ page }} </ion-button>
-    @if (lastPage > page) {
-      <ion-button color="primary"> {{ lastPage }} </ion-button>
-    }
-    <ion-button
-      (click)="changePage(page + 1)"
-      [disabled]="page === lastPage">
-      Suivant
-    </ion-button>
-  </div>
+  <app-pagination [page]="page" [lastPage]="lastPage" (changePage)="changePage($event)"></app-pagination>
 
 </ion-content>

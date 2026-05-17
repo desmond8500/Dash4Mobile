@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, effect, inject, Input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IonBackButton } from '@ionic/angular/standalone';
 
@@ -15,6 +15,7 @@ import {
   IonIcon,
 
  } from '@ionic/angular/standalone';
+import { MainService } from 'src/app/services/main-service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -34,9 +35,19 @@ export class HeaderComponent implements OnInit {
   @Input() title: string = '';
   @Input() back: string = '/';
 
+  _main = inject(MainService)
+  network = this._main
+
   constructor() {
     addIcons({ arrowBack });
+
+    effect(() => {
+      if (!this.network.isOnline()) {
+        this._main.toastShow('Connexion Perdue')
+      }
+    });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }

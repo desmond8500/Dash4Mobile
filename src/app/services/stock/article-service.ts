@@ -13,7 +13,7 @@ export class ArticleService {
 
   getArticles(search:string = '' ,page: number = 1) {
     return this._http.get(
-      `${this._main.getServer()}/v1/items?page=${page}?per_page=8`,
+      `${this._main.getServer()}/v1/items?page=${page}&per_page=8`,
     );
   }
   getArticle(article_id:any) {

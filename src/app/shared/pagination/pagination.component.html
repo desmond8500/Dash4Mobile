@@ -1,0 +1,23 @@
+<div class="pagination">
+    <div>
+      <ion-button size="small"
+        (click)="previousPage()"
+        [disabled]="page() === 1">
+      Précédent
+    </ion-button>
+
+    @if(page() > 1) {
+      <ion-button size="small" color="primary"> 1 </ion-button>
+    }
+    <ion-button size="small" color="medium"> {{ page() }} </ion-button>
+    @if (lastPage() > page()) {
+      <ion-button color="primary" size="small"> {{ lastPage() }} </ion-button>
+    }
+    <ion-button size="small"
+      (click)="nextPage()"
+      [disabled]="page === lastPage()">
+      Suivant
+    </ion-button>
+  </div>
+
+</div>

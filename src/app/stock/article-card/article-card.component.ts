@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { IonItemOption, IonItemSliding, IonItem, IonLabel, IonItemOptions, IonIcon, IonThumbnail } from "@ionic/angular/standalone";
+import { IonItemOption, IonItemSliding, IonItem, IonLabel, IonItemOptions, IonIcon, IonThumbnail, IonSkeletonText, IonText } from "@ionic/angular/standalone";
 import { addIcons } from 'ionicons';
 import { trash, create, information } from 'ionicons/icons';
 
@@ -20,6 +20,7 @@ import { trash, create, information } from 'ionicons/icons';
     IonThumbnail,
     RouterLink,
     CommonModule,
+    IonText,
   ]
 })
 export class ArticleCardComponent  implements OnInit {

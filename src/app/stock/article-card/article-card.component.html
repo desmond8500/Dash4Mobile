@@ -4,11 +4,11 @@
       <img alt="" [src]="article().image" />
     </ion-thumbnail>
     <ion-label>
-      <h3>{{ article().designation }}</h3>
-      <div>{{ article().reference }}</div>
+      <h3 class="name">{{ article().designation }}</h3>
+      <div class="reference">{{ article().reference }}</div>
     </ion-label>
     <div>
-      <div>{{ article().price | number }} F</div>
+      <ion-text class="price">{{ article().price | number }} F</ion-text>
     </div>
   </ion-item>
   <ion-item-options slot="end">

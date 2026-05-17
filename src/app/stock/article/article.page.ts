@@ -32,7 +32,6 @@ export class ArticlePage implements OnInit {
   getArticle(){
     this._article.getArticle(this.article_id).subscribe({
       next: (res: any) => {
-        console.log(res)
         this.article = res.data
       },
       error: (error: any) => console.log(error),
