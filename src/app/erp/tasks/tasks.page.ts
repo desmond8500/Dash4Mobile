@@ -5,19 +5,24 @@ import {
   IonContent,
   IonFooter,
   IonToolbar, IonRefresher,
-  IonRefresherContent} from '@ionic/angular/standalone';
+  IonRefresherContent, IonIcon, IonFabButton,
+  IonFab} from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from 'src/app/services/erp/task-service';
 import { TaskCardComponent } from './task-card/task-card.component';
 import { TaskFormComponent } from './task-form/task-form.component';
+import { MainService } from 'src/app/services/main-service';
+
+import { addIcons } from 'ionicons';
+import { add } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.page.html',
   styleUrls: ['./tasks.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonFabButton, IonIcon,
     IonRefresher,
     HeaderComponent,
     TaskCardComponent,
@@ -28,6 +33,8 @@ import { TaskFormComponent } from './task-form/task-form.component';
     IonToolbar,
     TaskFormComponent,
     IonRefresherContent,
+    IonFab,
+    IonFabButton,
   ],
 })
 export class TasksPage implements OnInit {
@@ -36,8 +43,11 @@ export class TasksPage implements OnInit {
   projet_id: any;
   tasks: any = [];
   _task = inject(TaskService);
+  _main = inject(MainService);
 
-  constructor() {}
+  constructor() {
+    addIcons({ add });
+  }
 
   ngOnInit() {
     this.projet_id = this.aroute.snapshot.paramMap.get('projet_id');
@@ -71,5 +81,6 @@ export class TasksPage implements OnInit {
 
     this._task.storeForm();
     this.getTasks();
+    this._main.toastShow("Tache ajoutée avec succès")
   }
 }

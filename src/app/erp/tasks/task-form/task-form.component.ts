@@ -1,16 +1,17 @@
 import { Component, computed, effect, inject, Input, OnInit, output, signal } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, ɵInternalFormsSharedModule } from '@angular/forms';
-import { IonButton, IonModal, IonToolbar, IonContent, IonInput, IonItem, IonTextarea, IonIcon, IonFooter } from '@ionic/angular/standalone';
+import { IonButton, IonModal, IonToolbar, IonContent, IonInput, IonItem, IonTextarea, IonIcon, IonFooter, IonToast } from '@ionic/angular/standalone';
 import { TaskService } from 'src/app/services/erp/task-service';
 import { addIcons } from 'ionicons';
 import { addCircle } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
+import { MainService } from 'src/app/services/main-service';
 
 @Component({
   selector: 'app-task-form',
   templateUrl: './task-form.component.html',
   styleUrls: ['./task-form.component.scss'],
-  imports: [
+  imports: [IonToast,
     IonIcon,
     IonItem,
     IonContent,
@@ -26,6 +27,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     IonIcon,
     IonFooter,
+    IonToast,
   ],
 })
 export class TaskFormComponent implements OnInit {
@@ -34,6 +36,7 @@ export class TaskFormComponent implements OnInit {
 
   event = output<any>();
   _task = inject(TaskService);
+  _main = inject(MainService);
   fb = inject(FormBuilder);
 
   title: any;

@@ -13,15 +13,10 @@
             <ion-textarea  labelPlacement="floating" label="Description dela tache"  [value]="_task.form().description" (ionInput)="_task.updateField('description', $event.target.value)"></ion-textarea>
           </ion-item>
         </form>
-        <!-- <form [formGroup]="form">
-          <ion-item>
-            <ion-input labelPlacement="floating" label="Nom de la tache" formControlName="name" [value]="_task.form().name" (ionInput)="_task.updateField('name', $event.target.value)"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-textarea  labelPlacement="floating" label="Description dela tache" formControlName="description" [value]="_task.form().description" (ionInput)="_task.updateField('description', $event.target.value)"></ion-textarea>
-          </ion-item>
-        </form> -->
+
         <ion-button (click)="submit()">{{ button }}</ion-button>
+
+        <ion-toast [message]="_main.toast().message" [duration]="_main.toast().duration" [isOpen]="_main.toast().show"></ion-toast>
       </ion-content>
 
       <ion-toolbar>
