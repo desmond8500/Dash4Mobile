@@ -22,7 +22,7 @@ import { add } from 'ionicons/icons';
   templateUrl: './tasks.page.html',
   styleUrls: ['./tasks.page.scss'],
   standalone: true,
-  imports: [IonFabButton, IonIcon,
+  imports: [
     IonRefresher,
     HeaderComponent,
     TaskCardComponent,
@@ -33,8 +33,7 @@ import { add } from 'ionicons/icons';
     IonToolbar,
     TaskFormComponent,
     IonRefresherContent,
-    IonFab,
-    IonFabButton,
+
   ],
 })
 export class TasksPage implements OnInit {

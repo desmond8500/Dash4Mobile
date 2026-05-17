@@ -97,4 +97,29 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./erp/notes/notes.page').then((m) => m.NotesPage),
   },
+  {
+    path: 'articles',
+    loadComponent: () => import('./stock/articles/articles.page').then( m => m.ArticlesPage)
+  },
+  {
+    path: 'article/:article_id',
+    loadComponent: () => import('./stock/article/article.page').then( m => m.ArticlePage)
+  },
+  {
+    path: 'providers',
+    loadComponent: () => import('./stock/providers/providers.page').then( m => m.ProvidersPage)
+  },
+  {
+    path: 'provider/:provider_id',
+    loadComponent: () => import('./stock/provider/provider.page').then( m => m.ProviderPage)
+  },
+  {
+    path: 'brands',
+    loadComponent: () => import('./stock/brands/brands.page').then( m => m.BrandsPage)
+  },
+  {
+    path: 'brand/:brand_id',
+    loadComponent: () => import('./stock/brand/brand.page').then( m => m.BrandPage)
+  },
+
 ];
