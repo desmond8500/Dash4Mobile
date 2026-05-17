@@ -17,17 +17,24 @@
   </ion-header>
 
   <ion-content class="ion-padding">
-    <ul>
-      <li routerLink="/login">Connexion</li>
-      <li routerLink="/dashboard">Dashboard</li>
-    </ul>
+    @for(menu of menus; track menu.id){
+      <h2>{{ menu.name }}</h2>
+      <ul>
+        @for(submenu of menu.list; track submenu.id){
+          @if (submenu.route) {
+            <li [routerLink]="submenu.route">{{ submenu.name }}</li>
+          }
+          @if (!submenu.route) {
+            <li style="color:red">{{ submenu.name }}</li>
+          }
+        }
+      </ul>
+    }
+
   </ion-content>
 
   <ion-footer>
     <ion-button expand="block" color="danger">Déconnexion</ion-button>
-
-
-
   </ion-footer>
 
 </ion-menu>
