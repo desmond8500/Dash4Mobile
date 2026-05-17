@@ -1,10 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonRefresher, IonRefresherContent, IonTitle, IonToolbar, IonButton, IonSearchbar } from '@ionic/angular/standalone';
+import { IonContent, IonRefresher, IonRefresherContent, IonSearchbar } from '@ionic/angular/standalone';
 import { ArticleService } from 'src/app/services/stock/article-service';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
-import { addIcons } from 'ionicons';
 import { ArticleCardComponent } from '../article-card/article-card.component';
 import { PaginationComponent } from 'src/app/shared/pagination/pagination.component';
 
@@ -14,7 +13,6 @@ import { PaginationComponent } from 'src/app/shared/pagination/pagination.compon
   styleUrls: ['./articles.page.scss'],
   standalone: true,
   imports: [
-    IonButton,
     IonContent,
     CommonModule,
     FormsModule,
