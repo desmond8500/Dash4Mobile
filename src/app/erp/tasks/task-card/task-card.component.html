@@ -1,0 +1,22 @@
+<ion-item-sliding >
+
+  <ion-item detail="true">
+    <ion-checkbox slot="start" aria-label="Toggle task completion" (click)="toggle()"></ion-checkbox>
+    <ion-label>
+      <h2>{{ task?.name }}</h2>
+      <markdown>{{ task?.description }}</markdown>
+    </ion-label>
+  </ion-item>
+
+  <ion-item-options>
+    <ion-item-option color="primary" routerLink="/task/{{ task?.id }}">
+      <ion-icon slot="icon-only" name="information"></ion-icon>
+    </ion-item-option>
+    <ion-item-option color="success" (click)="_task.editForm(task)">
+      <ion-icon slot="icon-only" name="create"></ion-icon>
+    </ion-item-option>
+    <ion-item-option color="danger" (click)="deleteTask()">
+      <ion-icon slot="icon-only" name="trash" ></ion-icon>
+    </ion-item-option>
+  </ion-item-options>
+</ion-item-sliding>

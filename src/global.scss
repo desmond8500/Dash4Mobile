@@ -36,20 +36,15 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
 
-.d-flex{
+@import './assets/css/flexbox.scss';
+@import './assets/css/dash.scss';
+
+.pagination {
   display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.d-grid{
-  display: grid;
-}
 
-.justify-content-between{
-  justify-content: space-between;
-}
-
-.align-items-center{
-  align-items: center;
-}
 
 

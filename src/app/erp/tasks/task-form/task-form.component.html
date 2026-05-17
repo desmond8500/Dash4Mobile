@@ -1,0 +1,36 @@
+  <ion-button size="small" (click)="_task.addForm()">
+    <ion-icon name="add-circle"></ion-icon> Tache
+  </ion-button>
+  <ion-modal [isOpen]="_task.form_status()" (didDismiss)="_task.closeForm()">
+
+    <ng-template>
+      <ion-content class="ion-padding">
+        <form >
+          <ion-item>
+            <ion-input labelPlacement="floating" label="Nom de la tache"  [value]="_task.form().name" (ionInput)="_task.updateField('name', $event.target.value)"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-textarea  labelPlacement="floating" label="Description dela tache"  [value]="_task.form().description" (ionInput)="_task.updateField('description', $event.target.value)"></ion-textarea>
+          </ion-item>
+        </form>
+        <!-- <form [formGroup]="form">
+          <ion-item>
+            <ion-input labelPlacement="floating" label="Nom de la tache" formControlName="name" [value]="_task.form().name" (ionInput)="_task.updateField('name', $event.target.value)"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-textarea  labelPlacement="floating" label="Description dela tache" formControlName="description" [value]="_task.form().description" (ionInput)="_task.updateField('description', $event.target.value)"></ion-textarea>
+          </ion-item>
+        </form> -->
+        <ion-button (click)="submit()">{{ button }}</ion-button>
+      </ion-content>
+
+      <ion-toolbar>
+        <ion-footer>
+
+          <ion-button (click)="_task.closeForm()">Fermer</ion-button>
+        </ion-footer>
+      </ion-toolbar>
+
+    </ng-template>
+
+  </ion-modal>

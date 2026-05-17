@@ -1,5 +1,18 @@
-<app-header title="Tache"></app-header>
+<app-header title="Tache" [back]="back"></app-header>
 
 <ion-content class="ion-padding">
 
+  <h2>{{ task?.name }}</h2>
+  <markdown>{{ task?.description }}</markdown>
+
+  <div class="d-flex-around">
+  </div>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="d-flex-around">
+      <ion-button size="small" color="primary" style="color:white">Modifier</ion-button>
+      <ion-button size="small" color="danger">Supprimer</ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

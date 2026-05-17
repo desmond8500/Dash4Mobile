@@ -1,0 +1,41 @@
+.d-flex {
+  display: flex;
+}
+
+.d-flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.d-flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+.d-flex-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+.d-flex-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+.d-grid {
+  display: grid;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-evenly {
+  justify-content: space-evenly;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}

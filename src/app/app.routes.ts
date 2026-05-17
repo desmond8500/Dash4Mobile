@@ -63,7 +63,7 @@ export const routes: Routes = [
       import('./erp/tasks/tasks.page').then((m) => m.TasksPage),
   },
   {
-    path: 'task',
+    path: 'task/:task_id',
     loadComponent: () =>
       import('./erp/tasks/task/task.page').then((m) => m.TaskPage),
   },

@@ -1,25 +1,75 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent } from '@ionic/angular/standalone';
+import {
+  IonContent,
+  IonFooter,
+  IonToolbar, IonRefresher,
+  IonRefresherContent} from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { ActivatedRoute } from '@angular/router';
+import { TaskService } from 'src/app/services/erp/task-service';
+import { TaskCardComponent } from './task-card/task-card.component';
+import { TaskFormComponent } from './task-form/task-form.component';
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.page.html',
   styleUrls: ['./tasks.page.scss'],
   standalone: true,
-  imports: [HeaderComponent, IonContent, CommonModule, FormsModule],
+  imports: [
+    IonRefresher,
+    HeaderComponent,
+    TaskCardComponent,
+    IonContent,
+    CommonModule,
+    FormsModule,
+    IonFooter,
+    IonToolbar,
+    TaskFormComponent,
+    IonRefresherContent,
+  ],
 })
 export class TasksPage implements OnInit {
   back: any;
   aroute = inject(ActivatedRoute);
   projet_id: any;
+  tasks: any = [];
+  _task = inject(TaskService);
+
   constructor() {}
 
   ngOnInit() {
     this.projet_id = this.aroute.snapshot.paramMap.get('projet_id');
+    this.getTasks();
     this.back = '/project/' + this.projet_id;
+  }
+
+  getTasks() {
+    this._task.getProjetTasks(this.projet_id).subscribe({
+      next: (data: any) => {
+        this.tasks = data;
+      },
+      error: (err) => {
+        console.error('Error fetching project:', err);
+      },
+    });
+  }
+
+  reload(event: any) {
+    // Recharger les données
+    this.getTasks();
+
+    // Fin du refresh
+    setTimeout(() => {
+      event.target.complete();
+    }, 1000);
+  }
+
+  store(form: any) {
+    this._task.setProjetID(this.projet_id);
+
+    this._task.storeForm();
+    this.getTasks();
   }
 }

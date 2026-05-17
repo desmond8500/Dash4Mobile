@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
- import { IonIcon } from '@ionic/angular/standalone';
- import { addIcons } from 'ionicons';
- import { close } from 'ionicons/icons';
+import { IonIcon } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { close } from 'ionicons/icons';
 
 @Component({
   selector: 'app-menus',

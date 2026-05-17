@@ -6,8 +6,6 @@ import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { ActivatedRoute, RouterLink,  } from '@angular/router';
 import { ProjectCardComponent } from '../project-card/project-card.component';
 import { ProjetService } from 'src/app/services/erp/projet-service';
-import { ProjectNotesCardComponent } from '../project-notes-card/project-notes-card.component';
-import { TasklistComponent } from '../../tasks/tasklist/tasklist.component';
 
 @Component({
   selector: 'app-project',
@@ -16,12 +14,10 @@ import { TasklistComponent } from '../../tasks/tasklist/tasklist.component';
   standalone: true,
   imports: [IonButton,
     IonContent,
-    ProjectNotesCardComponent ,
     CommonModule,
     FormsModule,
     HeaderComponent,
     ProjectCardComponent,
-    TasklistComponent,
     IonButton,
     RouterLink,
   ]
