@@ -28,8 +28,6 @@ export class ArticlesPage implements OnInit {
   back: any;
   _article = inject(ArticleService);
   articles: any = [];
-  page = 1;
-  lastPage = 1;
 
   constructor() {}
 
@@ -51,6 +49,9 @@ export class ArticlesPage implements OnInit {
     });
   }
 
+  // Pagination
+  page = 1;
+  lastPage = 1;
   changePage(page: number) {
     if (page >= 1 && page <= this.lastPage) {
       this.page = page;

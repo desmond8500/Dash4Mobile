@@ -19,11 +19,9 @@ export class PaginationComponent  implements OnInit {
   ngOnInit() {}
 
   nextPage(){
-    // this.page.set(this.page+1)
     this.changePage.emit(this.page()+1)
   }
   previousPage(){
-    // this.page.set(this.page-1)
     this.changePage.emit(this.page()-1)
   }
 

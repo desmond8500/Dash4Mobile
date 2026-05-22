@@ -40,12 +40,6 @@ export class HeaderComponent implements OnInit {
 
   constructor() {
     addIcons({ arrowBack });
-
-    effect(() => {
-      if (!this.network.isOnline()) {
-        this._main.toastShow('Connexion Perdue')
-      }
-    });
   }
 
   ngOnInit() {
