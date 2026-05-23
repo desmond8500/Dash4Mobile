@@ -1,0 +1,74 @@
+<app-header title="Editeur" [back]="back"></app-header>
+
+<ion-content class="ion-padding">
+
+  <div class="absolute left-0 top-0 w-60 h-full bg-white shadow z-50 p-2">
+
+  <div
+    class="border p-2 mb-2 cursor-pointer"
+    (click)="addCamera()">
+
+    📷 Caméra
+
+  </div>
+
+  <div class="border p-2 mb-2">
+
+    🚨 Détecteur
+
+  </div>
+
+  <div class="absolute right-4 top-4 z-50 flex flex-col gap-2">
+
+  <button
+    class="bg-white shadow p-2 rounded"
+    (click)="zoomIn()">
+
+    +
+
+  </button>
+
+  <button
+    class="bg-white shadow p-2 rounded"
+    (click)="zoomOut()">
+
+    -
+
+  </button>
+
+  <button
+  class="bg-white shadow p-2 rounded"
+  (click)="resetView()">
+
+  Reset
+
+</button>
+
+</div>
+
+  <input
+  type="file"
+  (change)="uploadPlan($event)">
+
+</div>*
+<div>
+  <div
+  class="absolute bottom-2 right-2 bg-white px-3 py-1 shadow rounded">
+
+  X: {{ mouseX }}
+  Y: {{ mouseY }}
+
+</div>
+</div>
+
+<div class="absolute left-2 top-2 z-50">
+
+  <button (click)="addCamera()"> Ajouter caméra </button>
+  <br>
+  <button (click)="add_image()"> Ajouter image </button>
+
+</div>
+
+<div #container class="container"></div>
+
+</ion-content>

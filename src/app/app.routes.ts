@@ -120,6 +120,10 @@ export const routes: Routes = [
   {
     path: 'brand/:brand_id',
     loadComponent: () => import('./stock/brand/brand.page').then( m => m.BrandPage)
+  },  {
+    path: 'editor',
+    loadComponent: () => import('./features/editor/editor.page').then( m => m.EditorPage)
   },
+
 
 ];
