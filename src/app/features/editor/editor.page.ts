@@ -1,10 +1,12 @@
-import { Component, ElementRef, HostListener, OnInit, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent } from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import Konva from 'konva';
 import { Equipment } from 'src/app/models/modele';
+import { EditorService } from 'src/app/services/editor-service';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-editor',
@@ -32,6 +34,10 @@ export class EditorPage implements OnInit {
   layer!: Konva.Layer;
 
   ngAfterViewInit(): void {
+    setInterval(() => {
+      // this.saveProject();
+    }, 5000);
+
     this.stage = new Konva.Stage({
       container: this.container.nativeElement,
       width: window.innerWidth,
@@ -103,7 +109,9 @@ export class EditorPage implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getProjects();
+  }
 
   // Add camera
   addCamera() {
@@ -336,5 +344,132 @@ export class EditorPage implements OnInit {
   mouseX = 0;
   mouseY = 0;
 
+  // API
+  editorService = inject(EditorService);
+  projectName = '';
+  saveProject() {
+    this.editorService
+      .saveProject({
+        name: this.projectName,
+        equipments: this.equipments(),
+      })
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+      });
+  }
+  projects: any[] = [];
+  getProjects() {
+    this.editorService.getProjects().subscribe({
+      next: (data) => {
+        console.log(data);
+        this.projects = data as any[];
+      },
+    });
+  }
 
+  selectedProject: any = null;
+
+  getProject(id: number) {
+    this.editorService.getProject(id).subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.selectedProject = data;
+        this.projectName = data.name;
+        data.equipments.forEach((equipment: any) => {
+          this.drawEquipment(equipment);
+        });
+      },
+    });
+  }
+
+  updateProject() {
+    if (!this.selectedProject.id) return;
+
+    this.editorService
+      .updateProject(this.selectedProject.id, {
+        name: this.projectName,
+        equipments: this.equipments(),
+      })
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+      });
+  }
+
+  // PNG
+  exportPNG() {
+    const uri = this.stage.toDataURL({
+      pixelRatio: 2,
+    });
+    const link = document.createElement('a');
+    link.download = 'implantation.png';
+    link.href = uri;
+    link.click();
+  }
+
+  // PDF
+  exportPDF() {
+    const stageWidth = this.stage.width();
+    const stageHeight = this.stage.height();
+    const pdfWidth = 277;
+    const pdfHeight = (stageHeight * pdfWidth) / stageWidth;
+
+    const image = this.stage.toDataURL({ pixelRatio: 2 });
+    const pdf = new jsPDF({
+      orientation: 'landscape',
+      unit: 'mm',
+      format: 'a4',
+    });
+    pdf.addImage(image, 'PNG', 10, 10, pdfWidth, pdfHeight);
+    pdf.text('Tyto Services', 10, 5);
+    // pdf.text( new Date().toLocaleDateString(), 240, 5, );
+    // pdf.setFontSize(18);
+    // pdf.text( this.projectName, 10, 20, );
+    pdf.save('implantation.pdf');
+  }
+
+  // Drag and drop
+
+  dragType: string = '';
+
+  onDragStart(event: DragEvent, type: string) {
+    this.dragType = type;
+  }
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+  }
+  onDrop(event: DragEvent) {
+    event.preventDefault();
+
+    const rect = this.container.nativeElement.getBoundingClientRect();
+
+    const pointer = {
+      x: event.clientX - rect.left,
+
+      y: event.clientY - rect.top,
+    };
+
+    const transform = this.stage.getAbsoluteTransform().copy();
+
+    transform.invert();
+
+    const pos = transform.point(pointer);
+
+    this.addEquipment(this.dragType, pos.x, pos.y);
+  }
+  addEquipment(type: string, x: number, y: number) {
+    const equipment: Equipment = {
+      id: crypto.randomUUID(),
+      type, x, y,
+      width: 80, height: 80, rotation: 0,
+      image: type === 'camera' ? 'assets/img/023-camera-de-securite-2.png' : 'assets/img/023-camera-de-securite-2.png',
+    };
+
+    this.equipments.update((items) => [...items, equipment]);
+
+    this.drawEquipment(equipment);
+  }
 }

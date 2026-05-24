@@ -2,73 +2,85 @@
 
 <ion-content class="ion-padding">
 
-  <div class="absolute left-0 top-0 w-60 h-full bg-white shadow z-50 p-2">
+  <div class="d-flex">
+    <div class="sidebar">
+      <input type="text" placeholder="Nom du projet" [(ngModel)]="projectName">
+      <button (click)="saveProject()" class="btn"> Sauvegarder </button>
+      <hr>
+      @for(projet of projects; track projet.id) {
+        <div class="project-item d-flex-around align-items-center" (click)="getProject(projet.id)">
+          <div (click)="getProject(projet.id)">{{ projet.name }}</div>
+          <div>
+            <button class="btn2" > M </button>
+            <button class="btn2 btn3"> S </button>
+          </div>
+        </div>
+      }
+      <hr>
+      @if (selectedProject) {
+        <div class="equipements">
+          <h2>Équipements</h2>
+          <button class="btn" (click)="updateProject()">
+            Mettre à jour
+          </button>
 
-  <div
-    class="border p-2 mb-2 cursor-pointer"
-    (click)="addCamera()">
+        </div>
+      }
+      <hr>
 
-    📷 Caméra
+      <button class="btn" (click)="exportPNG()"> Export PNG </button>
+      <button class="btn" (click)="exportPDF()"> Export PDF </button>
+
+      <hr>
+
+      <div draggable="true" (dragstart)="onDragStart($event, 'detector')" class="btn">
+        🚨 Détecteur
+      </div>
+
+
+    </div>
+    <div class="main">
+      <div class="d-flex">
+        <button (click)="addCamera()" class="btn"> + caméra </button>
+        <button (click)="add_image()" class="btn"> + image </button>
+        <button (click)="saveProject()" class="btn"> Sauvegarder </button>
+        <button (click)="getProjects()" class="btn"> Récupérer les projets </button>
+      </div>
+
+      <div class="d-flex-between align-items-center">
+        <div class="">
+          <button class="btn" (click)="zoomIn()"> Zoom + </button>
+          <button class="btn" (click)="zoomOut()"> Zoom - </button>
+          <button class="btn" (click)="resetView()"> Reset </button>
+        </div>
+
+        <input type="file" (change)="uploadPlan($event)">
+
+        <div>
+          <div class="mouse">
+            X: {{ mouseX }} -  Y: {{ mouseY }}
+          </div>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <div
+        #container
+        class="container"
+        (dragover)="onDragOver($event)"
+        (drop)="onDrop($event)">
+      </div>
+
+    </div>
 
   </div>
 
-  <div class="border p-2 mb-2">
 
-    🚨 Détecteur
 
-  </div>
 
-  <div class="absolute right-4 top-4 z-50 flex flex-col gap-2">
 
-  <button
-    class="bg-white shadow p-2 rounded"
-    (click)="zoomIn()">
 
-    +
-
-  </button>
-
-  <button
-    class="bg-white shadow p-2 rounded"
-    (click)="zoomOut()">
-
-    -
-
-  </button>
-
-  <button
-  class="bg-white shadow p-2 rounded"
-  (click)="resetView()">
-
-  Reset
-
-</button>
-
-</div>
-
-  <input
-  type="file"
-  (change)="uploadPlan($event)">
-
-</div>*
-<div>
-  <div
-  class="absolute bottom-2 right-2 bg-white px-3 py-1 shadow rounded">
-
-  X: {{ mouseX }}
-  Y: {{ mouseY }}
-
-</div>
-</div>
-
-<div class="absolute left-2 top-2 z-50">
-
-  <button (click)="addCamera()"> Ajouter caméra </button>
-  <br>
-  <button (click)="add_image()"> Ajouter image </button>
-
-</div>
-
-<div #container class="container"></div>
 
 </ion-content>
