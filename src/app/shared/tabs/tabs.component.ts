@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonTabs, IonTabButton, IonTabBar } from "@ionic/angular/standalone";
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { home, people, hammer, cube } from 'ionicons/icons';
+import { home, people, hammer, cube, heart } from 'ionicons/icons';
 
 @Component({
   selector: 'app-tabs',
@@ -16,9 +16,10 @@ export class TabsComponent  implements OnInit {
     { icon: 'people', name: 'Clients', route:'clients' },
     { icon: 'cube', name: 'Articles', route:'articles' },
     { icon: 'hammer', name: 'Galaxy', route:'galaxy' },
+    { icon: 'heart', name: 'Favoris', route:'favoris' },
   ]
   constructor() {
-    addIcons({ home, people, hammer, cube });
+    addIcons({ home, people, hammer, cube, heart });
    }
 
   ngOnInit() {}

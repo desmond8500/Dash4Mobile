@@ -1,7 +1,11 @@
 <app-header title="Clients"></app-header>
 
-<ion-content class="ion-padding">
+<ion-content class="">
+  <ion-refresher id="refresher" slot="fixed" (ionRefresh)="reload($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
+  <ion-searchbar animated="true" placeholder="Client" [(ngModel)]="search" (ionInput)="getClients()" (keydown.enter)="getClients()" debounce="500"></ion-searchbar>
   <ion-list>
     @for(client of clients?.data; track client.id) {
       <app-client-card [client]="client"></app-client-card>

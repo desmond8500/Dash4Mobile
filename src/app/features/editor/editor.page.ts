@@ -7,6 +7,7 @@ import Konva from 'konva';
 import { Equipment } from 'src/app/models/modele';
 import { EditorService } from 'src/app/services/editor-service';
 import jsPDF from 'jspdf';
+import { MainService } from 'src/app/services/main-service';
 
 @Component({
   selector: 'app-editor',
@@ -16,6 +17,8 @@ import jsPDF from 'jspdf';
   imports: [IonContent, CommonModule, FormsModule, HeaderComponent],
 })
 export class EditorPage implements OnInit {
+  _main = inject(MainService);
+
   back = '/';
   transformer!: Konva.Transformer;
   equipments = signal<Equipment[]>([]);
@@ -30,8 +33,8 @@ export class EditorPage implements OnInit {
   container!: ElementRef<HTMLDivElement>;
 
   stage!: Konva.Stage;
-
   layer!: Konva.Layer;
+
 
   ngAfterViewInit(): void {
     setInterval(() => {
@@ -49,21 +52,16 @@ export class EditorPage implements OnInit {
       e.evt.preventDefault();
 
       const scaleBy = 1.05;
-
       const oldScale = this.stage.scaleX();
-
       const pointer = this.stage.getPointerPosition();
-
       if (!pointer) return;
 
       const mousePointTo = {
         x: (pointer.x - this.stage.x()) / oldScale,
-
         y: (pointer.y - this.stage.y()) / oldScale,
       };
 
       const direction = e.evt.deltaY > 0 ? -1 : 1;
-
       const newScale = direction > 0 ? oldScale * scaleBy : oldScale / scaleBy;
 
       this.stage.scale({
@@ -73,22 +71,17 @@ export class EditorPage implements OnInit {
 
       const newPos = {
         x: pointer.x - mousePointTo.x * newScale,
-
         y: pointer.y - mousePointTo.y * newScale,
       };
 
       this.stage.position(newPos);
-
       this.stage.batchDraw();
     });
 
     this.stage.on('mousemove', () => {
       const pos = this.stage.getPointerPosition();
-
       if (!pos) return;
-
       this.mouseX = Math.round(pos.x);
-
       this.mouseY = Math.round(pos.y);
     });
 
@@ -98,12 +91,10 @@ export class EditorPage implements OnInit {
 
     this.transformer = new Konva.Transformer({
       rotateEnabled: true,
-
       enabledAnchors: ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
     });
 
     this.layer.add(this.transformer);
-
     this.drawGrid();
   }
 
@@ -397,6 +388,14 @@ export class EditorPage implements OnInit {
           console.log(res);
         },
       });
+  }
+  deleteProject(id: number) {
+    this.editorService.deleteProject(id).subscribe({
+      next: () => {
+        this.getProjects();
+        this._main.toastShow('Projet supprimé')
+      },
+    });
   }
 
   // PNG

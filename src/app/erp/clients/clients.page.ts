@@ -1,23 +1,28 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonList, IonTabButton, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonList, IonButton, IonSearchbar, IonRefresher, IonRefresherContent } from '@ionic/angular/standalone';
 import { ClientService } from 'src/app/services/erp/client-service';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { ClientCardComponent } from './client-card/client-card.component';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.page.html',
   styleUrls: ['./clients.page.scss'],
   standalone: true,
-  imports: [IonButton,
+  imports: [
+    IonButton,
     IonContent,
     CommonModule,
     FormsModule,
     HeaderComponent,
     ClientCardComponent,
     IonList,
+    IonSearchbar,
+    IonRefresher,
+    IonRefresherContent,
   ],
 })
 export class ClientsPage implements OnInit {
@@ -25,6 +30,9 @@ export class ClientsPage implements OnInit {
   clients: any;
   page = 1;
   lastPage = 1;
+  search = '';
+
+  loadingCtrl = inject(LoadingController);
 
   constructor() {}
 
@@ -32,11 +40,24 @@ export class ClientsPage implements OnInit {
     this.getClients();
   }
 
-  getClients() {
-    this._client.getClients(this.page).subscribe({
+  reload(event: any) {
+    this.getClients();
+    event.target.complete();
+  }
+
+  async getClients() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Recherche en cours...',
+      spinner: 'crescent',
+    });
+
+    await loading.present();
+
+    this._client.getClients(this.page, this.search).subscribe({
       next: (data: any) => {
         this.clients = data;
         this.lastPage = data.meta.last_page;
+        loading.dismiss();
       },
       error: (err) => {
         console.error(err);

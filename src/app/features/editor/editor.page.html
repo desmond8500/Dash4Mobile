@@ -4,22 +4,45 @@
 
   <div class="d-flex">
     <div class="sidebar">
-      <input type="text" placeholder="Nom du projet" [(ngModel)]="projectName">
-      <button (click)="saveProject()" class="btn"> Sauvegarder </button>
-      <hr>
+      <div class="flex d-flex-between align-items-center">
+        <input type="text" placeholder="Nom du projet" [(ngModel)]="projectName" style="font-size: 22px;">
+        <button (click)="saveProject()" class="btn"> + </button>
+      </div>
+
+      <div class="d-flex-between align-items-center">
+        <h2>Projets</h2>
+        <div>
+          <div class="mouse">
+            X: {{ mouseX }} -  Y: {{ mouseY }}
+          </div>
+        </div>
+      </div>
       @for(projet of projects; track projet.id) {
-        <div class="project-item d-flex-around align-items-center" (click)="getProject(projet.id)">
+        <div class="project-item d-flex-between align-items-center" (click)="getProject(projet.id)">
           <div (click)="getProject(projet.id)">{{ projet.name }}</div>
           <div>
             <button class="btn2" > M </button>
-            <button class="btn2 btn3"> S </button>
+            <button class="btn2 btn3" (click)="deleteProject(projet.id)"> S </button>
           </div>
         </div>
       }
-      <hr>
+
       @if (selectedProject) {
+        <div>
+          <h2>Articles</h2>
+          <div>
+            <div draggable="true" (dragstart)="onDragStart($event, 'detector')" class="btn">
+            🚨 Détecteur
+          </div>
+          </div>
+        </div>
+
         <div class="equipements">
           <h2>Équipements</h2>
+          <div>
+            <button (click)="addCamera()" class="btn"> + caméra </button>
+            <button (click)="add_image()" class="btn"> + image </button>
+          </div>
           <button class="btn" (click)="updateProject()">
             Mettre à jour
           </button>
@@ -27,22 +50,16 @@
         </div>
       }
       <hr>
-
+      <h2>Exporter</h2>
       <button class="btn" (click)="exportPNG()"> Export PNG </button>
       <button class="btn" (click)="exportPDF()"> Export PDF </button>
 
-      <hr>
-
-      <div draggable="true" (dragstart)="onDragStart($event, 'detector')" class="btn">
-        🚨 Détecteur
-      </div>
-
 
     </div>
+
     <div class="main">
       <div class="d-flex">
-        <button (click)="addCamera()" class="btn"> + caméra </button>
-        <button (click)="add_image()" class="btn"> + image </button>
+
         <button (click)="saveProject()" class="btn"> Sauvegarder </button>
         <button (click)="getProjects()" class="btn"> Récupérer les projets </button>
       </div>
@@ -57,9 +74,7 @@
         <input type="file" (change)="uploadPlan($event)">
 
         <div>
-          <div class="mouse">
-            X: {{ mouseX }} -  Y: {{ mouseY }}
-          </div>
+
         </div>
 
       </div>

@@ -1,0 +1,24 @@
+<app-header title="Favoris"></app-header>
+
+<ion-content fullscreen="true" class="ion-padding">
+  <ion-refresher id="refresher" slot="fixed" (ionRefresh)="reload($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-text>
+    <h2>Clients</h2>
+  </ion-text>
+  @for(client of favoris?.clients; track client.id){
+  <app-client-card [client]="client"></app-client-card>
+  }
+  <ion-text>
+    <h2>Projets</h2>
+  </ion-text>
+  @for(projet of favoris?.projets; track projet.id){
+  <app-project-card [projet]="projet"></app-project-card>
+  }
+
+
+
+
+</ion-content>
