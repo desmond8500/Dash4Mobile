@@ -3,10 +3,22 @@
   border-radius: 5px;
   padding: 5px;
   text-align: center;
+  min-height: 30px;
 }
 
 ion-input{
-  border-top: 1px solid gray;
-  --padding: 5px;
   margin-top: 10px;
+}
+
+.list{
+  border: 1px solid #0163aa;
+  border-radius: 5px;
+  padding: 2px;
+  margin-top: 5px;
+}
+
+.title{
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
 }

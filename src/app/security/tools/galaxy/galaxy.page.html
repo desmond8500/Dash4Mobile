@@ -4,27 +4,39 @@
 
   @if(result()){
     <div class="result">{{ result() }} </div>
-
   }
 
-  <form  class="form" [formGroup]="form">
-    <ion-item>
-      <ion-input [(ngModel)]="textInput"
-        mode="android"
-        label="Texte"
+  <form  class=" mb-3" [formGroup]="form">
+      <ion-input
+        [(ngModel)]="textInput"
+        mode="md"
+        label="Texte à convertir"
         labelPlacement="floating"
         [clearInput]="true"
         placeholder="Texte à convertir"
         fill="outline"
         formControlName="search"
+        maxlength="16"
         >
       </ion-input>
 
-    </ion-item>
   </form>
 
-  <div>
+  <div class="list">
+    <div class="title">Équipements</div>
+    @for(item of list_equip; track item){
+      <ion-button size="small" (click)="appendInput(item)">{{ item }}</ion-button>
+    }
+  </div>
+  <div class="list">
+    <div class="title">Zones</div>
     @for(item of list; track item){
+      <ion-button size="small" (click)="appendInput(item)">{{ item }}</ion-button>
+    }
+  </div>
+  <div class="list">
+    <div class="title">Numéros</div>
+    @for(item of list_numbers; track item){
       <ion-button size="small" (click)="appendInput(item)">{{ item }}</ion-button>
     }
   </div>

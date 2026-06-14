@@ -12,7 +12,6 @@ import {  } from '@ionic/angular';
   styleUrls: ['./galaxy.page.scss'],
   standalone: true,
   imports: [
-    IonItem,
     IonInput,
     HeaderComponent,
     IonContent,
@@ -33,6 +32,8 @@ export class GalaxyPage implements OnInit {
 
   letterMap: any;
   list: any;
+  list_numbers: any;
+  list_equip: any;
 
   constructor() {}
 
@@ -80,15 +81,39 @@ export class GalaxyPage implements OnInit {
       ['9', '09'],
     ]);
 
+    this.list_equip = [
+      'CO',
+      'VOL',
+      'SIS',
+      'BOUTON',
+      'BP',
+      'PEDALE',
+      'PEDALES',
+      'PDL',
+    ];
     this.list = [
-      'CO', 'VOL', 'ENTREE', 'CLIENT', 'PERSONNEL', 'BP',
-      'LT', 'PEDALE', 'PERSO',
+      'ENTREE',
+      'ENT',
+      'CLIENT',
+      'PERSO',
+      'CAISSE',
+      'GV',
+      'DA',
+      'CC',
+      'COFFRE',
+      'GAB',
+      'LT',
+      'LOCAL TECH',
+      'ARCHIVES',
+      'HALL',
+    ];
+    this.list_numbers = [
       '1','2','3','4','5','6','7','8','9','0'
     ]
   }
 
   result = computed(() => {
-    return [...this.textInput().toLowerCase()]
+    return [...this.textInput().toLowerCase().slice(0,16)]
       .map((letter) => this.letterMap.get(letter))
       .filter((v) => v !== undefined);
   });
