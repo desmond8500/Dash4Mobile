@@ -1,11 +1,11 @@
 <app-header title="Articles" [back]="back"></app-header>
 
-<ion-content class="ion-padding">
+<ion-content class="">
   <ion-refresher id="refresher" slot="fixed" (ionRefresh)="reload($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar placeholder="Rechercher un article..." (ionInput)="getArticles()"></ion-searchbar>
 
   @for(article of articles; track article.id){
     <app-article-card [article]="article"></app-article-card>

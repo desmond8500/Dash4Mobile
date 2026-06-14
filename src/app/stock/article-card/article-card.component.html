@@ -5,11 +5,11 @@
     </ion-thumbnail>
     <ion-label>
       <h3 class="name">{{ article().designation }}</h3>
-      <div class="reference">{{ article().reference }}</div>
+      <div class="d-flex-between">
+        <div class="reference">{{ article().reference }}</div>
+        <ion-text class="price">{{ article().price | number }} F</ion-text>
+      </div>
     </ion-label>
-    <div>
-      <ion-text class="price">{{ article().price | number }} F</ion-text>
-    </div>
   </ion-item>
   <ion-item-options slot="end">
     <ion-item-option color="warning" routerLink="/article/{{ article().id }}">
