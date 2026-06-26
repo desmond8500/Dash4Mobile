@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonButton, LoadingController } from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { ActivatedRoute, RouterLink,  } from '@angular/router';
 import { ProjectCardComponent } from '../project-card/project-card.component';
@@ -31,6 +31,7 @@ export class ProjectPage implements OnInit {
   server: any
 
   menus: any
+  loadingCtrl = inject(LoadingController);
 
   constructor() {
     this.projet_id = this.aroute.snapshot.paramMap.get('projectId');
@@ -83,11 +84,19 @@ export class ProjectPage implements OnInit {
     this.back = "projets"+this.projet_id
   }
 
-  getProjet() {
+  async getProjet() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Recherche en cours...',
+      spinner: 'crescent',
+    });
+
+    await loading.present();
+
     this._projet.getProject(this.projet_id).subscribe({
       next: (data: any) => {
         this.projet = data.data;
         this.back = '/projects/' + this.projet?.client_id;
+        loading.dismiss();
       },
       error: (err) => {
         console.error('Error fetching project:', err);

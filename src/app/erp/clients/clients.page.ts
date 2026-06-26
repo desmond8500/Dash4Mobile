@@ -34,8 +34,6 @@ export class ClientsPage implements OnInit {
 
   loadingCtrl = inject(LoadingController);
 
-  constructor() {}
-
   ngOnInit() {
     this.getClients();
   }

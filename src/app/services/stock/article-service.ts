@@ -11,15 +11,13 @@ export class ArticleService {
 
   // Articles
 
-  getArticles(search:string = '' ,page: number = 1) {
+  getArticles(search: string = '', page: number = 1) {
     return this._http.get(
       `${this._main.getServer()}/v1/items?page=${page}&per_page=8`,
     );
   }
-  getArticle(article_id:any) {
-    return this._http.get(
-      `${this._main.getServer()}/v1/items/${article_id}`,
-    );
+  getArticle(article_id: any) {
+    return this._http.get(`${this._main.getServer()}/v1/items/${article_id}`);
   }
   // addArticles(postForm:any):Observable<any>{
   //   return this._http.post(this.server+'/v1/articles/', postForm)
@@ -30,4 +28,20 @@ export class ArticleService {
   // deleteArticles(postForm :any):Observable<any>{
   //   return this._http.delete(this.server+'/v1/articles/'+postForm.id)
   // }
+
+  getImages(article_id: any) {
+    return this._http.get(
+      `${this._main.getServer()}/v1/items_image/${article_id}`,
+    );
+  }
+  getLinks(article_id: any) {
+    return this._http.get(
+      `${this._main.getServer()}/v1/items_link/${article_id}`,
+    );
+  }
+  getDocuments(article_id: any) {
+    return this._http.get(
+      `${this._main.getServer()}/v1/items_document/${article_id}`,
+    );
+  }
 }

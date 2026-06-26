@@ -9,8 +9,8 @@ export class ProjetService {
   _main = inject(MainService);
   _http = inject(HttpClient);
 
-  getServer(){
-    return this._main.getServer()
+  getServer() {
+    return this._main.getServer();
   }
 
   getProjects(client_id: number, page: number = 1) {
@@ -23,15 +23,35 @@ export class ProjetService {
     return this._http.get(`${this._main.getServer()}/v1/projets/${project_id}`);
   }
 
+  // Notes
+
   getNotes(project_id: number, page: number = 1) {
     return this._http.get(
       `${this._main.getServer()}/v1/get_projet_notes/${project_id}`,
       // `${this._main.getServer()}/v1/get_projet_notes/${project_id}?page=${page}`,
     );
   }
+
   getNote(note_id: number, page: number = 1) {
     return this._http.get(
       `${this._main.getServer()}/v1/projet_notes/${note_id}`,
+    );
+  }
+
+  addNote(note: any) {
+    return this._http.post(`${this._main.getServer()}/v1/projet_notes`, note);
+  }
+
+  updateNote(note: any) {
+    return this._http.post(
+      `${this._main.getServer()}/v1/projet_notes/${note.note_id}}`,
+      note,
+    );
+  }
+
+  deleteNote(note_id: any) {
+    return this._http.delete(
+      `${this._main.getServer()}/v1/projet_notes/${note_id}}`
     );
   }
 }

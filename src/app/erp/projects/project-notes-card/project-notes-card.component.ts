@@ -5,6 +5,7 @@ import {
   IonAccordionGroup,
   IonItem,
   IonLabel,
+  LoadingController,
 } from '@ionic/angular/standalone';
 import { MarkdownComponent } from 'ngx-markdown';
 
@@ -19,6 +20,7 @@ export class ProjectNotesCardComponent implements OnInit {
   @Input() projet_id: any;
   _projet = inject(ProjetService);
   notes: any = [];
+  loadingCtrl = inject(LoadingController);
 
   constructor() {  }
 
@@ -28,9 +30,18 @@ export class ProjectNotesCardComponent implements OnInit {
   }
 
   async getNotes() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Recherche en cours...',
+      spinner: 'crescent',
+    });
+
+    await loading.present();
+
     this._projet.getNotes(this.projet_id).subscribe({
       next: (data: any) => {
         this.notes = data;
+        console.log(data);
+        loading.dismiss();
       },
       error: (err) => {
         console.error('Error fetching notes:', err);
