@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonList, LoadingController, IonRefresher, IonSearchbar, IonRefresherContent } from '@ionic/angular/standalone';
+import { IonContent, IonList, LoadingController, IonRefresher, IonSearchbar, IonRefresherContent, IonButton } from '@ionic/angular/standalone';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjetService } from 'src/app/services/erp/projet-service';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
@@ -12,7 +12,7 @@ import { ProjectCardComponent } from './project-card/project-card.component';
   templateUrl: './projects.page.html',
   styleUrls: ['./projects.page.scss'],
   standalone: true,
-  imports: [
+  imports: [IonButton,
     IonRefresher,
     IonRefresherContent,
     IonList,

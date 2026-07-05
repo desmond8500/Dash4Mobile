@@ -1,6 +1,6 @@
 import { Component, effect, inject, Input, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { IonBackButton } from '@ionic/angular/standalone';
+import { Router, RouterLink } from '@angular/router';
+import { IonBackButton, Platform } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
 import { arrowBack } from 'ionicons/icons';
@@ -16,6 +16,7 @@ import {
 
  } from '@ionic/angular/standalone';
 import { MainService } from 'src/app/services/main-service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -35,13 +36,21 @@ export class HeaderComponent implements OnInit {
   @Input() title: string = '';
   @Input() back: string = '/';
 
-  _main = inject(MainService)
-  network = this._main
+  _main = inject(MainService);
+  _route = inject(Router)
+  network = this._main;
+  private backButtonSub?: Subscription;
 
-  constructor() {
+  constructor(private platform: Platform) {
     addIcons({ arrowBack });
   }
 
   ngOnInit() {
+    this.backButtonSub = this.platform.backButton.subscribeWithPriority(
+      10,
+      () => {
+        this._route.navigate([this.back])
+      },
+    );
   }
 }

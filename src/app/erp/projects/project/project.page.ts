@@ -1,18 +1,23 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonButton, LoadingController } from '@ionic/angular/standalone';
+import { IonContent, IonButton, LoadingController, IonBreadcrumb, IonBreadcrumbs, IonIcon } from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { ActivatedRoute, RouterLink,  } from '@angular/router';
 import { ProjectCardComponent } from '../project-card/project-card.component';
 import { ProjetService } from 'src/app/services/erp/projet-service';
+
+import { addIcons } from 'ionicons';
+import { home, people, ellipse } from 'ionicons/icons';
+
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.page.html',
   styleUrls: ['./project.page.scss'],
   standalone: true,
-  imports: [IonButton,
+  imports: [
+    IonButton,
     IonContent,
     CommonModule,
     FormsModule,
@@ -20,23 +25,26 @@ import { ProjetService } from 'src/app/services/erp/projet-service';
     ProjectCardComponent,
     IonButton,
     RouterLink,
-  ]
+    IonBreadcrumb,
+    IonBreadcrumbs,
+    IonIcon,
+  ],
 })
 export class ProjectPage implements OnInit {
   aroute = inject(ActivatedRoute);
   _projet = inject(ProjetService);
+  bmenus : any
   projet_id: any;
   projet: any;
-  back: any
-  server: any
+  back: any;
+  server: any;
 
-  menus: any
+  menus: any;
   loadingCtrl = inject(LoadingController);
 
   constructor() {
     this.projet_id = this.aroute.snapshot.paramMap.get('projectId');
-    // console.log(this.projet_id);
-
+    addIcons({ home, people, ellipse });
     this.menus = [
       {
         id: 1,
@@ -75,13 +83,19 @@ export class ProjectPage implements OnInit {
         route: '/buildings/' + this.projet_id,
       },
     ];
-   }
+    this.bmenus = [
+      { id: 1, name: 'Accueil', icon: 'home', route: '/home' },
+      // { id: 2, name: 'Clients', icon: 'poeple', route: '/clients' },
+      // { id: 3, name: 'Projets', icon: 'ellipse', route: '/projets' },
+      // { id: 4, name: 'Projet', icon: 'ellipse', route: '/projet' },
+    ];
+  }
 
   ngOnInit() {
     this.projet_id = this.aroute.snapshot.paramMap.get('projectId');
     this.getProjet();
     this.getServer();
-    this.back = "projets"+this.projet_id
+    this.back = 'projets' + this.projet_id;
   }
 
   async getProjet() {
@@ -104,8 +118,7 @@ export class ProjectPage implements OnInit {
     });
   }
 
-  getServer(){
-    this.server = this._projet.getServer()
+  getServer() {
+    this.server = this._projet.getServer();
   }
-
 }

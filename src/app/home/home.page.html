@@ -1,6 +1,16 @@
 <app-header title="Accueil" ></app-header>
 
 <ion-content class="ion-padding">
+  <ion-breadcrumbs [maxItems]="4" [itemsBeforeCollapse]="2" >
+    @for(menu of menus; track menu.id){
+      <ion-breadcrumb [routerLink]="menu.route">
+        <ion-icon slot="start" [name]="menu.icon"></ion-icon>
+        {{ menu.name }}
+      </ion-breadcrumb>
+    }
+  </ion-breadcrumbs>
+
+
   <h2>Bienvenue v11 👋</h2>
   <div>
     <ion-button routerLink="/project/200">Dash3</ion-button>

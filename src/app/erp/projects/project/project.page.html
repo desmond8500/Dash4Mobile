@@ -1,5 +1,14 @@
 <app-header title="Projet" [back]="back"></app-header>
 
+<!-- <ion-breadcrumbs [maxItems]="4" [itemsBeforeCollapse]="2">
+  @for(menu of bmenus; track menu.id){
+  <ion-breadcrumb [routerLink]="menu.route">
+    <ion-icon slot="start" [name]="menu.icon"></ion-icon>
+    {{ menu.name }}
+  </ion-breadcrumb>
+  }
+</ion-breadcrumbs> -->
+
 <ion-content class="ion-padding">
   <app-project-card [projet]="projet"  target="_blank"></app-project-card>
 

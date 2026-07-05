@@ -8,7 +8,7 @@
   <ion-searchbar animated="true" placeholder="Projet" [(ngModel)]="search" (ionInput)="filterProjets()"
     (keydown.enter)="filterProjets()" debounce="500"></ion-searchbar>
 
-
+  <ion-button></ion-button>
   <ion-list>
     @for(projet of projets; track projet.id) {
       <app-project-card [projet]="projet"></app-project-card>

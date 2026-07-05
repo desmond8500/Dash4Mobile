@@ -5,6 +5,15 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+  <ion-breadcrumbs [maxItems]="4" [itemsBeforeCollapse]="2">
+    @for(menu of menus; track menu.id){
+    <ion-breadcrumb [routerLink]="menu.route">
+      <ion-icon slot="start" [name]="menu.icon"></ion-icon>
+      {{ menu.name }}
+    </ion-breadcrumb>
+    }
+  </ion-breadcrumbs>
+
   <ion-text>
     <h2>Clients</h2>
   </ion-text>

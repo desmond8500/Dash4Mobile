@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, viewChild, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonContent, IonButton, IonHeader, IonToolbar, IonButtons, IonCardTitle, IonModal, IonTitle, IonItem, IonInput, IonTextarea, IonFooter, IonRefresher, IonRefresherContent } from '@ionic/angular/standalone';
@@ -14,8 +14,6 @@ import { ProjetService } from 'src/app/services/erp/projet-service';
   styleUrls: ['./notes.page.scss'],
   standalone: true,
   imports: [
-    IonRefresherContent,
-    IonRefresher,
     IonFooter,
     IonTextarea,
     IonInput,
@@ -37,16 +35,22 @@ import { ProjetService } from 'src/app/services/erp/projet-service';
 export class NotesPage implements OnInit {
   back: any;
   aroute = inject(ActivatedRoute);
-  _projet = inject(ProjetService)
+  _projet = inject(ProjetService);
   fb = inject(FormBuilder);
   projet_id: any;
+
+  notes = viewChild(ProjectNotesCardComponent);
+
+  reloadNotes(){
+    this.notes()?.getNotes()
+  }
 
   form: FormGroup = this.fb.group({
     id: new FormControl(null),
     projet_id: new FormControl(null),
     titre: new FormControl(null),
     description: new FormControl(null),
-  })
+  });
 
   ngOnInit() {
     this.projet_id = this.aroute.snapshot.paramMap.get('projet_id');
@@ -65,7 +69,7 @@ export class NotesPage implements OnInit {
   }
 
   confirm() {
-    this.postNote()
+    this.postNote();
     this.modal.dismiss(this.name, 'Valider');
   }
 
@@ -75,16 +79,16 @@ export class NotesPage implements OnInit {
     }
   }
 
-  postNote(){
+  postNote() {
     this.form.patchValue({
-      "projet_id" : this.projet_id
-    })
+      projet_id: this.projet_id,
+    });
 
     this._projet.addNote(this.form.value).subscribe({
       next: (res: any) => {
-        console.log(res)
+        this.notes()?.getNotes();
       },
       error: (error: any) => console.log(error),
-    })
+    });
   }
 }

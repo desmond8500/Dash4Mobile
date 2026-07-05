@@ -45,7 +45,12 @@ export class ProjectNotesCardComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error fetching notes:', err);
+        loading.dismiss()
       },
     });
+  }
+
+  reload(event:any){
+    this.getNotes()
   }
 }
