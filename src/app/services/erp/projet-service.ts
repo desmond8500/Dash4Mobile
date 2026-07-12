@@ -54,8 +54,6 @@ export class ProjetService {
     this.addProject(this.form()).subscribe({
       next: (data: any) => {
         this.form_status.set(false);
-        console.log("event2", data);
-
       },
       error: (err) => {
         console.error('Error adding project:', err);

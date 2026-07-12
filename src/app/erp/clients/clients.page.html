@@ -29,11 +29,11 @@
     </ion-button>
 
     @if(page > 1) {
-      <ion-button color="primary"> 1 </ion-button>
+      <ion-button color="primary" (click)="changePage(1)"> 1 </ion-button>
     }
     <ion-button color="medium"> {{ page }} </ion-button>
     @if (lastPage > page) {
-      <ion-button color="primary"> {{ lastPage }} </ion-button>
+      <ion-button color="primary" (click)="changePage(lastPage)"> {{ lastPage }} </ion-button>
     }
     <ion-button
       (click)="changePage(page + 1)"

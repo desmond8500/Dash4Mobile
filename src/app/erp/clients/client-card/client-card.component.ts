@@ -6,7 +6,7 @@ import { IonThumbnail, IonItem, IonLabel, IonAvatar } from '@ionic/angular/stand
   selector: 'app-client-card',
   templateUrl: './client-card.component.html',
   styleUrls: ['./client-card.component.scss'],
-  imports: [IonAvatar,
+  imports: [
     IonItem,
     IonThumbnail,
     IonLabel,

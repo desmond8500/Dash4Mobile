@@ -90,8 +90,7 @@ export class ProjectsPage implements OnInit {
   }
 
   store(event: any) {
-    console.log("project event:", event);
-
+    this._projet.setClientID(this.client_id);
     this._projet.storeForm();
   }
 
