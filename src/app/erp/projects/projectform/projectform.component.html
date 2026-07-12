@@ -1,0 +1,40 @@
+<ion-button size="small" (click)="_projet.addForm()">
+  <ion-icon name="add"></ion-icon> Projet
+</ion-button>
+<ion-modal [isOpen]="_projet.form_status()" (didDismiss)="_projet.closeForm()">
+
+  <ng-template>
+    <ion-content class="ion-padding">
+      <div class="d-flex-between align-items-center">
+        <ion-text>Formulaire du projet</ion-text>
+        <ion-button (click)="_projet.closeForm()" color="dark" fill="clear">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </div>
+      <form>
+        <ion-item>
+          <ion-input labelPlacement="floating" label="Nom du projet" [value]="_projet.form().name"
+            (ionInput)="_projet.updateField('name', $event.target.value)"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-textarea labelPlacement="floating" label="Description du projet" [value]="_projet.form().description"
+            (ionInput)="_projet.updateField('description', $event.target.value)"></ion-textarea>
+        </ion-item>
+      </form>
+
+      <ion-button (click)="submit()">{{ button }}</ion-button>
+
+      <ion-toast [message]="_main.toast().message" [duration]="_main.toast().duration"
+        [isOpen]="_main.toast().show"></ion-toast>
+    </ion-content>
+
+    <ion-toolbar>
+      <ion-footer>
+
+        <ion-button (click)="_projet.closeForm()">Fermer</ion-button>
+      </ion-footer>
+    </ion-toolbar>
+
+  </ng-template>
+
+</ion-modal>

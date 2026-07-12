@@ -1,18 +1,23 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonList, LoadingController, IonRefresher, IonSearchbar, IonRefresherContent, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonList, LoadingController, IonRefresher, IonSearchbar, IonRefresherContent, IonButton, IonIcon, IonFooter, IonToolbar } from '@ionic/angular/standalone';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjetService } from 'src/app/services/erp/projet-service';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
+import { addIcons } from 'ionicons';
+import {
+  add,
+} from 'ionicons/icons';
+import { ProjectformComponent } from './projectform/projectform.component';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.page.html',
   styleUrls: ['./projects.page.scss'],
   standalone: true,
-  imports: [IonButton,
+  imports: [
     IonRefresher,
     IonRefresherContent,
     IonList,
@@ -22,6 +27,7 @@ import { ProjectCardComponent } from './project-card/project-card.component';
     HeaderComponent,
     ProjectCardComponent,
     IonSearchbar,
+    ProjectformComponent
   ],
 })
 export class ProjectsPage implements OnInit {
@@ -34,6 +40,12 @@ export class ProjectsPage implements OnInit {
   search = '';
 
   loadingCtrl = inject(LoadingController);
+
+  constructor() {
+    addIcons({
+      add,
+    });
+  }
 
   ngOnInit() {
     this.client_id = this.aroute.snapshot.paramMap.get('clientId');
@@ -72,9 +84,15 @@ export class ProjectsPage implements OnInit {
   async filterProjets() {
     const search = this.search.toLowerCase().trim();
 
-    this.projets = this.allProjets.filter(
-      (p: any) =>
-        (p.name ?? '').toLowerCase().includes(search)
+    this.projets = this.allProjets.filter((p: any) =>
+      (p.name ?? '').toLowerCase().includes(search),
     );
   }
+
+  store(event: any) {
+    console.log("project event:", event);
+
+    this._projet.storeForm();
+  }
+
 }

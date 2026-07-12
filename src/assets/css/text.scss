@@ -1,0 +1,21 @@
+.text-start{
+  text-align: start;
+}
+
+.text-end{
+  text-align: end;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.text-justify{
+  text-align: justify;
+}
+
+.text-center-vertical{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

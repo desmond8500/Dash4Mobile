@@ -9,7 +9,6 @@ import { LoadingController } from '@ionic/angular';
 
 import { addIcons } from 'ionicons';
 import { people} from 'ionicons/icons';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-clients',
@@ -17,9 +16,6 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./clients.page.scss'],
   standalone: true,
   imports: [
-    IonBreadcrumb,
-    IonBreadcrumbs,
-    IonIcon,
     IonButton,
     IonContent,
     CommonModule,
@@ -30,7 +26,6 @@ import { RouterLink } from '@angular/router';
     IonSearchbar,
     IonRefresher,
     IonRefresherContent,
-    RouterLink,
   ],
 })
 export class ClientsPage implements OnInit {
@@ -71,7 +66,6 @@ export class ClientsPage implements OnInit {
     this._client.getClients(this.page, this.search).subscribe({
       next: (data: any) => {
         this.clients = data;
-        console.log(data);
 
         this.lastPage = data.meta.last_page;
         loading.dismiss();
@@ -89,12 +83,4 @@ export class ClientsPage implements OnInit {
     }
   }
 
-  // loadMore(event: any) {
-  //   if (this.page < this.lastPage) {
-  //     this.page++;
-  //     this.getClients(event);
-  //   } else {
-  //     event.target.disabled = true; // stop scroll
-  //   }
-  // }
 }

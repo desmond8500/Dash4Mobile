@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonButton, LoadingController, IonBreadcrumb, IonBreadcrumbs, IonIcon } from '@ionic/angular/standalone';
+import { IonContent, IonButton, LoadingController,  } from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/shared/header/header.component';
 import { ActivatedRoute, RouterLink,  } from '@angular/router';
 import { ProjectCardComponent } from '../project-card/project-card.component';
@@ -25,9 +25,6 @@ import { home, people, ellipse } from 'ionicons/icons';
     ProjectCardComponent,
     IonButton,
     RouterLink,
-    IonBreadcrumb,
-    IonBreadcrumbs,
-    IonIcon,
   ],
 })
 export class ProjectPage implements OnInit {

@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { IonThumbnail, IonItem, IonLabel } from '@ionic/angular/standalone';
+import { IonThumbnail, IonItem, IonLabel, IonAvatar } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-client-card',
   templateUrl: './client-card.component.html',
   styleUrls: ['./client-card.component.scss'],
-  imports: [
+  imports: [IonAvatar,
     IonItem,
     IonThumbnail,
     IonLabel,

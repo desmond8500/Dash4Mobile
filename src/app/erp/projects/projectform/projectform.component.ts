@@ -1,24 +1,23 @@
-import { Component, inject, Input, OnInit, output } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule, ɵInternalFormsSharedModule } from '@angular/forms';
-import { IonButton, IonModal, IonToolbar, IonContent, IonInput, IonItem, IonTextarea, IonIcon, IonFooter, IonToast } from '@ionic/angular/standalone';
-import { TaskService } from 'src/app/services/erp/task-service';
-import { addIcons } from 'ionicons';
-import { addCircle } from 'ionicons/icons';
 import { CommonModule } from '@angular/common';
+import { Component, inject, Input, OnInit, output } from '@angular/core';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IonButton, IonContent, IonFooter, IonIcon, IonInput, IonItem, IonModal, IonTextarea, IonToast, IonToolbar, IonText } from "@ionic/angular/standalone";
+import { addIcons } from 'ionicons';
+import { add } from 'ionicons/icons';
+import { ProjetService } from 'src/app/services/erp/projet-service';
 import { MainService } from 'src/app/services/main-service';
 
 @Component({
-  selector: 'app-task-form',
-  templateUrl: './task-form.component.html',
-  styleUrls: ['./task-form.component.scss'],
-  imports: [IonToast,
+  selector: 'app-projectform',
+  templateUrl: './projectform.component.html',
+  styleUrls: ['./projectform.component.scss'],
+  imports: [IonText,
+    IonToast,
     IonIcon,
     IonItem,
     IonContent,
-    IonModal,
     IonToolbar,
     IonButton,
-    ɵInternalFormsSharedModule,
     IonInput,
     IonTextarea,
     IonItem,
@@ -28,14 +27,18 @@ import { MainService } from 'src/app/services/main-service';
     IonIcon,
     IonFooter,
     IonToast,
-  ],
+    IonFooter,
+    IonToolbar,
+    IonIcon,
+    IonModal
+    ],
 })
-export class TaskFormComponent implements OnInit {
+export class ProjectformComponent implements OnInit {
   @Input() type: any = 'add';
   @Input() task: any;
 
   event = output<any>();
-  _task = inject(TaskService);
+  _projet = inject(ProjetService);
   _main = inject(MainService);
   fb = inject(FormBuilder);
 
@@ -43,16 +46,14 @@ export class TaskFormComponent implements OnInit {
   button: any;
 
   form = this.fb.group({
-    projet_id: '',
-    priority_id: 1,
-    statut_id: 1,
+    client_id: '',
     favoris: 0,
     name: 'Tache 6',
     description: 'Démo',
   });
 
   constructor() {
-    addIcons({ addCircle });
+    addIcons({ add });
   }
 
   ngOnInit() {

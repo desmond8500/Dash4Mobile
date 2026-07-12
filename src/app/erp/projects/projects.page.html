@@ -1,17 +1,26 @@
 <app-header title="Projets" back="/clients"></app-header>
 
-<ion-content class="ion-padding">
+<ion-content >
   <ion-refresher id="refresher" slot="fixed" (ionRefresh)="reload($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-searchbar animated="true" placeholder="Projet" [(ngModel)]="search" (ionInput)="filterProjets()"
-    (keydown.enter)="filterProjets()" debounce="500"></ion-searchbar>
+  <div class="d-flex-between align-items-center">
+    <ion-searchbar animated="true" placeholder="Projet" [(ngModel)]="search" (ionInput)="filterProjets()"
+      (keydown.enter)="filterProjets()" debounce="500"></ion-searchbar>
 
-  <ion-button></ion-button>
+      <div class="text-end me-2">
+        <app-projectform (event)="store($event)"></app-projectform>
+      </div>
+
+  </div>
+
   <ion-list>
     @for(projet of projets; track projet.id) {
       <app-project-card [projet]="projet"></app-project-card>
     }
   </ion-list>
+
+
+
 </ion-content>

@@ -10,22 +10,22 @@ export class JournalService {
   _http = inject(HttpClient);
 
   getJournals(projet_id: number) {
-    return this._http.get(`${this._main.getServer()}/journaux?${projet_id}`);
+    return this._http.get(`${this._main.getServer()}/v1/journaux?projet_id=${projet_id}`);
   }
 
   getJournal(id: number) {
-    return this._http.get(`${this._main.getServer()}/journaux/$id`);
+    return this._http.get(`${this._main.getServer()}/v1/journaux/${id}`);
   }
 
   postJournal(data: any) {
-    return this._http.post(`${this._main.getServer()}/journaux`, data);
+    return this._http.post(`${this._main.getServer()}/v1/journaux`, data);
   }
 
   updateJournal(id: number, data: any) {
-    return this._http.put(`${this._main.getServer()}/journaux/$id?`, data);
+    return this._http.put(`${this._main.getServer()}/v1/journaux/${id}?`, data);
   }
 
   deleteJournal(id: number) {
-    return this._http.delete(`${this._main.getServer()}/journaux/$id`);
+    return this._http.delete(`${this._main.getServer()}/v1/journaux/${id}`);
   }
 }
