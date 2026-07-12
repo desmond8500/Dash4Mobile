@@ -2,6 +2,10 @@
 
 <ion-content class="ion-padding">
 
+  <div class="d-flex justify-content-end">
+    <app-task-form (event)="store($event)"></app-task-form>
+  </div>
+
   <ion-refresher id="refresher" slot="fixed" (ionRefresh)="reload($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -11,9 +15,3 @@
   }
 
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar>
-    <app-task-form (event)="store($event)"></app-task-form>
-  </ion-toolbar>
-</ion-footer>
