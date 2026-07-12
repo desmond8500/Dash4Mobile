@@ -12,7 +12,7 @@
 <ion-content class="ion-padding">
   <app-project-card [projet]="projet"  target="_blank"></app-project-card>
 
-  <div class="menus">
+  <div class="menus mx-auto">
     @for(menu of menus; track menu.id){
       <ion-button class="menu" [routerLink]="menu.route">
         {{ menu.name }}
